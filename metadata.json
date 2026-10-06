@@ -1,0 +1,6 @@
+{
+  "name": "Império Marble - Importação e Exportação de Mármores e Granitos",
+  "description": "Império Marble Importação e Exportação Ltda - Comércio atacadista de mármores nobres, quartzitos exóticos e granitos em chapas e blocos. Guarapari - ES.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

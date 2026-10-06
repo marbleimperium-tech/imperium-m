@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Metallic Gold Linear & Radial Gradients matching the user's uploaded badge -->
+    <linearGradient id="goldRing" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#eed89f" />
+      <stop offset="25%" stopColor="#cda55d" />
+      <stop offset="50%" stopColor="#fdf0cd" />
+      <stop offset="75%" stopColor="#ab833b" />
+      <stop offset="100%" stopColor="#d8b26e" />
+    </linearGradient>
+
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stopColor="#f7e5b7" />
+      <stop offset="35%" stopColor="#dcb36c" />
+      <stop offset="70%" stopColor="#b88d43" />
+      <stop offset="100%" stopColor="#e5c583" />
+    </linearGradient>
+
+    <radialGradient id="darkBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stopColor="#171614" />
+      <stop offset="85%" stopColor="#0d0c0b" />
+      <stop offset="100%" stopColor="#060605" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background Base Circle -->
+  <circle cx="256" cy="256" r="250" fill="url(#darkBg)" />
+
+  <!-- Outer Fine Gold Ring -->
+  <circle cx="256" cy="256" r="236" fill="none" stroke="url(#goldRing)" stroke-width="16" />
+
+  <!-- Inner Hairline Highlight -->
+  <circle cx="256" cy="256" r="224" fill="none" stroke="rgba(212, 175, 55, 0.35)" stroke-width="1.5" />
+
+  <!-- Monogram "IM" (Império Marble) -->
+  <text
+    x="256"
+    y="342"
+    font-family="'Cinzel', 'Times New Roman', 'Cormorant Garamond', serif"
+    font-size="205"
+    font-weight="600"
+    letter-spacing="14"
+    fill="url(#goldText)"
+    text-anchor="middle"
+    dominant-baseline="alphabetic"
+  >IM</text>
+</svg>
