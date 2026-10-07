@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { INSPIRATION_PROJECTS, ProjectShowcase } from '../data/projects';
 import { StoneItem } from '../types/stone';
 import { STONES_DATABASE } from '../data/stones';
+import { useI18n } from '../context/I18nContext';
 import { Sparkles, ArrowRight, MapPin, Eye, Layers } from 'lucide-react';
 
 interface ProjectShowcaseSectionProps {
@@ -13,9 +14,11 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
   onOpenSlabDetail,
   onRequestQuoteForProject,
 }) => {
+  const { tr, ls } = useI18n();
   const [activeProject, setActiveProject] = useState<ProjectShowcase>(INSPIRATION_PROJECTS[0]);
 
   const associatedStone = STONES_DATABASE.find((s) => s.id === activeProject.stoneId) || STONES_DATABASE[0];
+  const associatedStoneView = ls(associatedStone);
 
   return (
     <section id="projetos" className="py-20 sm:py-28 bg-stone-900 border-t border-stone-800 text-stone-100">
@@ -25,18 +28,25 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-amber-500 mb-2">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Inspiração Arquitetônica & Referências</span>
+              <span>{tr({ pt: 'Inspiração Arquitetônica & Referências', en: 'Architectural Inspiration & References', es: 'Inspiración Arquitectónica y Referencias', it: 'Ispirazione Architettonica & Referenze' })}</span>
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-stone-100 tracking-tight">
-              Obras de Prestígio Revestidas com Nossas Rochas
+              {tr({ pt: 'Obras de Prestígio Revestidas com Nossas Rochas', en: 'Prestigious Projects Clad in Our Stones', es: 'Obras de Prestigio Revestidas con Nuestras Rocas', it: 'Opere di Prestigio Rivestite con le Nostre Pietre' })}
             </h2>
             <p className="mt-4 text-stone-300 text-sm sm:text-base leading-relaxed">
-              Como nas grandes marcas mundiais como a Guidoni, nossas rochas são especificadas pelos mais renomados escritórios de arquitetura e design para criar obras memoráveis no Brasil e no exterior.
+              {tr({
+                pt: 'Nossas rochas são especificadas pelos mais renomados escritórios de arquitetura e design para criar obras memoráveis no Brasil e no exterior.',
+                en: 'Our stones are specified by the most renowned architecture and design firms to create memorable projects in Brazil and abroad.',
+                es: 'Nuestras rocas son especificadas por los estudios de arquitectura y diseño más reconocidos para crear obras memorables en Brasil y en el exterior.',
+                it: "Le nostre pietre sono scelte dai più rinomati studi di architettura e design per creare opere memorabili in Brasile e all'estero.",
+              })}
             </p>
           </div>
 
           <div className="text-xs text-stone-400 font-mono">
-            Mostrando <span className="text-amber-400 font-bold">{INSPIRATION_PROJECTS.length}</span> projetos de referência
+            {tr({ pt: 'Mostrando', en: 'Showing', es: 'Mostrando', it: 'Mostrando' })}{' '}
+            <span className="text-amber-400 font-bold">{INSPIRATION_PROJECTS.length}</span>{' '}
+            {tr({ pt: 'projetos de referência', en: 'reference projects', es: 'proyectos de referencia', it: 'progetti di riferimento' })}
           </div>
         </div>
 
@@ -46,7 +56,7 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
           <div className="lg:col-span-7 relative aspect-[16/10] overflow-hidden group">
             <img
               src={activeProject.imageUrl}
-              alt={activeProject.title}
+              alt={tr(activeProject.title)}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             />
@@ -55,11 +65,11 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
             <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-stone-300">
               <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-stone-900/90 backdrop-blur-md border border-stone-800">
                 <MapPin className="w-3.5 h-3.5 text-amber-500" />
-                <span>{activeProject.location}</span>
+                <span>{tr(activeProject.location)}</span>
               </span>
 
               <span className="px-3 py-1.5 rounded-lg bg-stone-900/90 backdrop-blur-md border border-stone-800 font-mono text-amber-400">
-                Ano: {activeProject.stats.year}
+                {tr({ pt: 'Ano', en: 'Year', es: 'Año', it: 'Anno' })}: {activeProject.stats.year}
               </span>
             </div>
           </div>
@@ -68,26 +78,26 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
           <div className="lg:col-span-5 p-6 sm:p-8 space-y-6">
             <div>
               <span className="text-xs font-semibold uppercase tracking-wider text-amber-400">
-                {activeProject.category}
+                {tr(activeProject.category)}
               </span>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-stone-100 mt-1">
-                {activeProject.title}
+                {tr(activeProject.title)}
               </h3>
               <p className="text-xs text-stone-400 mt-1">
-                Projeto assinado por: <strong className="text-stone-200">{activeProject.architect}</strong>
+                {tr({ pt: 'Projeto assinado por', en: 'Project by', es: 'Proyecto firmado por', it: 'Progetto firmato da' })}: <strong className="text-stone-200">{activeProject.architect}</strong>
               </p>
             </div>
 
             <p className="text-sm text-stone-300 leading-relaxed">
-              {activeProject.description}
+              {tr(activeProject.description)}
             </p>
 
             {/* Stone Info Card */}
             <div className="p-4 bg-stone-900 rounded-2xl border border-stone-800 space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-xs text-stone-400">Rocha Especificada:</span>
+                <span className="text-xs text-stone-400">{tr({ pt: 'Rocha Especificada:', en: 'Specified Stone:', es: 'Roca Especificada:', it: 'Pietra Specificata:' })}</span>
                 <span className="text-[11px] uppercase tracking-wider text-amber-500 font-semibold">
-                  {associatedStone.categoryLabel}
+                  {associatedStoneView.categoryLabel}
                 </span>
               </div>
 
@@ -105,7 +115,7 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
                     {associatedStone.name}
                   </h4>
                   <div className="text-xs text-stone-400 mt-0.5">
-                    Acabamento: {activeProject.stats.finish} · Área: {activeProject.stats.area}
+                    {tr({ pt: 'Acabamento', en: 'Finish', es: 'Acabado', it: 'Finitura' })}: {tr(activeProject.stats.finish)} · {tr({ pt: 'Área', en: 'Area', es: 'Área', it: 'Area' })}: {activeProject.stats.area}
                   </div>
                 </div>
               </div>
@@ -117,7 +127,7 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
                   className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-medium transition-colors cursor-pointer"
                 >
                   <Eye className="w-3.5 h-3.5 text-amber-400" />
-                  <span>Ver Chapa</span>
+                  <span>{tr({ pt: 'Ver Chapa', en: 'View Slab', es: 'Ver Placa', it: 'Vedi Lastra' })}</span>
                 </button>
 
                 <button
@@ -125,7 +135,7 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
                   onClick={() => onRequestQuoteForProject(associatedStone)}
                   className="flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-stone-950 text-xs font-bold transition-colors cursor-pointer shadow-md"
                 >
-                  <span>Cotar Lote</span>
+                  <span>{tr({ pt: 'Cotar Lote', en: 'Quote Lot', es: 'Cotizar Lote', it: 'Preventivo Lotto' })}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -150,17 +160,17 @@ export const ProjectShowcaseSection: React.FC<ProjectShowcaseSectionProps> = ({
                 <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-3">
                   <img
                     src={proj.imageUrl}
-                    alt={proj.title}
+                    alt={tr(proj.title)}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/70 backdrop-blur-md text-[10px] text-amber-300 font-medium">
-                    {proj.category}
+                    {tr(proj.category)}
                   </div>
                 </div>
 
                 <div className="text-xs font-serif font-bold text-stone-100 truncate">
-                  {proj.title}
+                  {tr(proj.title)}
                 </div>
                 <div className="text-[11px] text-stone-400 mt-0.5 truncate">
                   {proj.stoneName}

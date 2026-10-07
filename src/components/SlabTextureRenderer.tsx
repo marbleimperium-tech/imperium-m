@@ -1,5 +1,6 @@
 import React from 'react';
 import { StoneItem } from '../types/stone';
+import { useI18n } from '../context/I18nContext';
 
 interface SlabTextureRendererProps {
   stone: StoneItem;
@@ -20,6 +21,7 @@ export const SlabTextureRenderer: React.FC<SlabTextureRendererProps> = ({
   aspectRatio = 'slab',
   slabIndex = 12,
 }) => {
+  const { tr } = useI18n();
   const { baseColor, secondaryColor, veinColor, veinColor2 = '#e2d4be', patternType } = stone.texturePattern;
   const isTranslucent = stone.specs.translucency;
 
@@ -228,10 +230,15 @@ export const SlabTextureRenderer: React.FC<SlabTextureRendererProps> = ({
           <div className="flex items-center gap-1.5 text-amber-400 font-bold">
             <span>IMPÉRIO MARBLE</span>
             <span className="text-stone-500">·</span>
-            <span>CHAPA #{slabIndex.toString().padStart(2, '0')}</span>
+            <span>{tr({ pt: 'CHAPA', en: 'SLAB', es: 'PLANCHA', it: 'LASTRA' })} #{slabIndex.toString().padStart(2, '0')}</span>
           </div>
           <div className="text-stone-400 text-[8px]">
-            LOTE EXPORTAÇÃO · GUARAPARI/ES
+            {tr({
+              pt: 'LOTE EXPORTAÇÃO · GUARAPARI/ES',
+              en: 'EXPORT BATCH · GUARAPARI/ES',
+              es: 'LOTE EXPORTACIÓN · GUARAPARI/ES',
+              it: 'LOTTO ESPORTAZIONE · GUARAPARI/ES',
+            })}
           </div>
         </div>
       </div>
@@ -258,21 +265,36 @@ export const SlabTextureRenderer: React.FC<SlabTextureRendererProps> = ({
       {/* Bookmatch indicator watermark */}
       {isBookmatched && (
         <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-black/85 backdrop-blur-md rounded-md border border-amber-500/50 text-[10px] uppercase tracking-widest text-amber-300 font-bold shadow-xl">
-          Paginação Bookmatch (A + B Casado)
+          {tr({
+            pt: 'Paginação Bookmatch (A + B Casado)',
+            en: 'Bookmatch Layout (A + B Matched)',
+            es: 'Diseño Bookmatch (A + B Emparejado)',
+            it: 'Layout Bookmatch (A + B Accoppiato)',
+          })}
         </div>
       )}
 
       {/* Backlight active badge */}
       {isBacklit && isTranslucent && (
         <div className="absolute top-3 right-3 px-2.5 py-1 bg-amber-400 text-stone-950 font-bold text-[10px] uppercase tracking-wider rounded shadow-lg">
-          Retroiluminação LED Ativa
+          {tr({
+            pt: 'Retroiluminação LED Ativa',
+            en: 'LED Backlight Active',
+            es: 'Retroiluminación LED Activa',
+            it: 'Retroilluminazione LED Attiva',
+          })}
         </div>
       )}
 
       {/* Dimension Tag */}
       {showSlabDimensions && !isBookmatched && (
         <div className="absolute bottom-3 right-3 px-2 py-0.5 bg-stone-950/85 backdrop-blur-sm text-stone-300 text-[10px] font-mono tracking-tight rounded border border-stone-800">
-          ~ 3.10m × 1.95m | Esp. 2cm/3cm
+          {tr({
+            pt: '~ 3.10m × 1.95m | Esp. 2cm/3cm',
+            en: '~ 3.10m × 1.95m | Thk. 2cm/3cm',
+            es: '~ 3.10m × 1.95m | Grosor 2cm/3cm',
+            it: '~ 3.10m × 1.95m | Spess. 2cm/3cm',
+          })}
         </div>
       )}
     </div>

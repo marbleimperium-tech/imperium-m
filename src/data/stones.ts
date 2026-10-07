@@ -37,8 +37,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Resistência extrema a ácidos e riscos',
       'Formações minerais de quartzo puro'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1599696848652-f0ff23bc911f?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/patagonia-chapa.jpg',
+    architecturalPhotoUrl: '/images/patagonia-chapa.jpg',
   },
   {
     id: 'mont-blanc-supreme',
@@ -76,8 +76,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Substituto ideal para mármores brancos',
       'Disponível em chapas bookmatched'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/mont-blanc-chapa.jpg',
+    architecturalPhotoUrl: '/images/mont-blanc-chapa.jpg',
   },
   {
     id: 'calacatta-imperial-gold',
@@ -115,8 +115,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Resinagem e tela de reforço de fábrica',
       'Tratamento impermeabilizante de alta penetração'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/calacatta-imperial-gold.jpg',
+    architecturalPhotoUrl: '/images/calacatta-imperial-gold.jpg',
   },
   {
     id: 'nero-marquina-prime',
@@ -154,8 +154,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Contraste cromático de alto impacto',
       'Homogeneidade de lote garantida'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/nero-marquina-chapa.png',
+    architecturalPhotoUrl: '/images/nero-marquina-chapa.png',
   },
   {
     id: 'taj-mahal-royal',
@@ -193,8 +193,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Estabilidade térmica elevada',
       'Textura aveludada na versão escovada'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/taj-mahal-chapa.png',
+    architecturalPhotoUrl: '/images/taj-mahal-chapa.png',
   },
   {
     id: 'titanium-gold-black',
@@ -232,8 +232,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Excelente resistência mecânica',
       'Padrão singular em cada chapa'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/titanium-gold-chapa.png',
+    architecturalPhotoUrl: '/images/titanium-gold-chapa.png',
   },
   {
     id: 'emerald-green-esmeralda',
@@ -271,8 +271,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Permite retroiluminação estratégica',
       'Pedra de coleção e alta especificação'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/emerald-green-chapa.png',
+    architecturalPhotoUrl: '/images/emerald-green-chapa.png',
   },
   {
     id: 'preto-sao-gabriel',
@@ -310,8 +310,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Resistência comprovada ao tempo',
       'Amplo estoque para entrega imediata em lote'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/preto-sao-gabriel-chapa.png',
+    architecturalPhotoUrl: '/images/preto-sao-gabriel-chapa.png',
   },
   {
     id: 'travertino-navona-romano',
@@ -349,8 +349,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Opção com resinagem transparente ou estucado',
       'Estética arquitetônica atemporal'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/travertino-romano-chapa.png',
+    architecturalPhotoUrl: '/images/travertino-romano-chapa.png',
   },
   {
     id: 'blue-roma-exotic',
@@ -388,8 +388,8 @@ export const STONES_DATABASE: StoneItem[] = [
       'Total resistência a riscos por talheres ou facas',
       'Lotes selecionados bloco a bloco'
     ],
-    realPhotoUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=80',
-    architecturalPhotoUrl: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=80',
+    realPhotoUrl: '/images/blue-roma-chapa.png',
+    architecturalPhotoUrl: '/images/blue-roma-chapa.png',
   }
 ];
 

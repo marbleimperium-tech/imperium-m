@@ -7,7 +7,6 @@ import { HeroSlider } from './components/HeroSlider';
 import { StoneCatalog } from './components/StoneCatalog';
 import { ProjectShowcaseSection } from './components/ProjectShowcaseSection';
 import { BookmatchStudio } from './components/BookmatchStudio';
-import { EnvironmentSimulator } from './components/EnvironmentSimulator';
 import { QuarriesAndESG } from './components/QuarriesAndESG';
 import { B2BSegments } from './components/B2BSegments';
 import { B2BCalculator } from './components/B2BCalculator';
@@ -17,9 +16,11 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { SlabDetailModal } from './components/SlabDetailModal';
 import { QuoteModal } from './components/QuoteModal';
+import { useI18n } from './context/I18nContext';
 import { MessageSquare } from 'lucide-react';
 
 function AppContent() {
+  const { tr } = useI18n();
   const [selectedStoneForModal, setSelectedStoneForModal] = useState<StoneItem | null>(null);
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [quoteSelectedStone, setQuoteSelectedStone] = useState<StoneItem | null>(null);
@@ -45,13 +46,6 @@ function AppContent() {
     setQuoteModalOpen(true);
   };
 
-  const handleSimulateInEnvironment = (_stone: StoneItem) => {
-    const el = document.getElementById('simulador');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="min-h-screen bg-stone-950 text-stone-100 flex flex-col font-sans selection:bg-amber-600/30 selection:text-amber-200">
       {/* Top Bar with Guidoni-style aesthetic */}
@@ -71,7 +65,6 @@ function AppContent() {
         <StoneCatalog
           onOpenSlabDetail={handleOpenSlabDetail}
           onRequestQuote={handleRequestQuote}
-          onSimulateInEnvironment={handleSimulateInEnvironment}
         />
 
         {/* Architectural Reference Projects Showcase (Guidoni signature) */}
@@ -83,11 +76,6 @@ function AppContent() {
         {/* Interactive Digital Bookmatch Studio */}
         <BookmatchStudio
           onRequestQuote={(stone) => handleRequestQuote(stone)}
-        />
-
-        {/* Architectural Environment Simulator */}
-        <EnvironmentSimulator
-          onSelectStoneForQuote={(stone) => handleRequestQuote(stone)}
         />
 
         {/* Quarries, Technology & ESG Sustainability */}
@@ -141,11 +129,23 @@ function AppContent() {
         href={COMPANY_INFO.contact.whatsappUrl}
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-40 flex items-center gap-2 py-3 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-2xl transition-all hover:scale-105"
-        aria-label="WhatsApp Comercial"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 flex items-center gap-2 py-3 px-3 sm:px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-2xl transition-all hover:scale-105"
+        aria-label={tr({
+          pt: 'WhatsApp Comercial',
+          en: 'Sales WhatsApp',
+          es: 'WhatsApp Comercial',
+          it: 'WhatsApp Commerciale',
+        })}
       >
-        <MessageSquare className="w-4 h-4" />
-        <span className="hidden sm:inline">WhatsApp Comercial</span>
+        <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4" />
+        <span className="hidden sm:inline">
+          {tr({
+            pt: 'WhatsApp Comercial',
+            en: 'Sales WhatsApp',
+            es: 'WhatsApp Comercial',
+            it: 'WhatsApp Commerciale',
+          })}
+        </span>
       </a>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StoneItem } from '../types/stone';
 import { SlabTextureRenderer } from './SlabTextureRenderer';
-import { SmartStoneImage } from './SmartStoneImage';
 import { useI18n } from '../context/I18nContext';
 import { X, ZoomIn, Layers, Sun, Check, ArrowRight, ShieldCheck, MapPin, Sparkles, Camera, Home } from 'lucide-react';
 import { COMPANY_INFO } from '../data/stones';
@@ -15,19 +14,20 @@ interface SlabDetailModalProps {
 type ModalViewType = 'real-slab' | 'architectural' | 'vector-interactive';
 
 export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
-  stone,
+  stone: rawStone,
   onClose,
   onRequestQuote,
 }) => {
-  const { t } = useI18n();
+  const { t, tr, ls, language } = useI18n();
   const [modalView, setModalView] = useState<ModalViewType>('real-slab');
   const [isBookmatched, setIsBookmatched] = useState(false);
   const [isBacklit, setIsBacklit] = useState(false);
-  const [selectedFinish, setSelectedFinish] = useState<string>(stone?.finishes[0] || 'Polido');
+  const [selectedFinish, setSelectedFinish] = useState<string>(rawStone?.finishes[0] || 'Polido');
   const [isZoomed, setIsZoomed] = useState(false);
   const [zoomPos, setZoomPos] = useState({ x: 50, y: 50 });
 
-  if (!stone) return null;
+  if (!rawStone) return null;
+  const stone = ls(rawStone);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -36,14 +36,25 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
     setZoomPos({ x, y });
   };
 
-  const whatsappMessage = encodeURIComponent(
-    `Olá, equipe Império Marble! Gostaria de informações comerciais e disponibilidade de lote para a rocha: ${stone.name} (${stone.categoryLabel}). Local de entrega / Porto:`
-  );
+  const getWhatsappMsg = () => {
+    switch (language) {
+      case 'en':
+        return `Hello Império Marble team! I would like commercial details and lot availability for stone: ${stone.name} (${stone.categoryLabel}). Delivery location / Port:`;
+      case 'es':
+        return `¡Hola, equipo de Império Marble! Quisiera información comercial y disponibilidad de lote para la roca: ${stone.name} (${stone.categoryLabel}). Lugar de entrega / Puerto:`;
+      case 'it':
+        return `Salve, team Império Marble! Vorrei informazioni commerciali e disponibilità di lotto per la pietra: ${stone.name} (${stone.categoryLabel}). Luogo di consegna / Porto:`;
+      default:
+        return `Olá, equipe Império Marble! Gostaria de informações comerciais e disponibilidade de lote para a rocha: ${stone.name} (${stone.categoryLabel}). Local de entrega / Porto:`;
+    }
+  };
+
+  const whatsappMessage = encodeURIComponent(getWhatsappMsg());
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-md">
       <div
-        className="relative w-full max-w-5xl my-auto bg-stone-900 border border-stone-800 rounded-2xl shadow-2xl overflow-hidden text-stone-100 animate-in fade-in zoom-in-95 duration-200"
+        className="relative w-full max-w-5xl sm:my-auto bg-stone-900 border-0 sm:border border-stone-800 sm:rounded-2xl shadow-2xl overflow-hidden text-stone-100 animate-in fade-in zoom-in-95 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header bar */}
@@ -64,14 +75,14 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
           <button
             onClick={onClose}
             className="p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors cursor-pointer"
-            aria-label="Fechar"
+            aria-label={tr({ pt: 'Fechar', en: 'Close', es: 'Cerrar', it: 'Chiudi' })}
           >
             <X className="w-6 h-6" />
           </button>
         </div>
 
         {/* Modal Body */}
-        <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 max-h-[82vh] overflow-y-auto">
+        <div className="p-4 sm:p-6 grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 max-h-[75vh] sm:max-h-[82vh] overflow-y-auto">
           {/* Left Column: Media & Visualizer (7 cols) */}
           <div className="lg:col-span-7 space-y-4">
             {/* View Mode Switcher Tabs */}
@@ -86,7 +97,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                 }`}
               >
                 <Camera className="w-3.5 h-3.5" />
-                <span>Foto Real da Chapa</span>
+                <span>{tr({ pt: 'Foto Real da Chapa', en: 'Real Slab Photo', es: 'Foto Real de la Placa', it: 'Foto Reale della Lastra' })}</span>
               </button>
 
               <button
@@ -99,7 +110,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                 }`}
               >
                 <Home className="w-3.5 h-3.5" />
-                <span>Aplicação Real em Obra</span>
+                <span>{tr({ pt: 'Aplicação Real em Obra', en: 'Real Project Application', es: 'Aplicación Real en Obra', it: 'Applicazione Reale in Opera' })}</span>
               </button>
 
               <button
@@ -124,27 +135,50 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
               onMouseMove={handleMouseMove}
             >
               {modalView === 'real-slab' && (
-                <SlabTextureRenderer
-                  stone={stone}
-                  isBookmatched={false}
-                  isBacklit={isBacklit}
-                  showSlabDimensions={true}
-                  aspectRatio="slab"
-                  className="w-full h-full"
-                />
+                stone.realPhotoUrl ? (
+                  <div className="relative aspect-[1.58/1] w-full overflow-hidden">
+                    <img
+                      src={stone.realPhotoUrl}
+                      alt={`${stone.name}`}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-300"
+                      style={
+                        isZoomed
+                          ? {
+                              transformOrigin: `${zoomPos.x}% ${zoomPos.y}%`,
+                              transform: 'scale(1.8)',
+                            }
+                          : undefined
+                      }
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute bottom-3 left-3 px-3 py-1 bg-stone-950/85 backdrop-blur-md rounded border border-stone-800 text-xs text-amber-300 font-mono">
+                      {tr({ pt: 'Foto Real da Chapa · Lote Padrão Exportação', en: 'Real Slab Photo · Export Grade Lot', es: 'Foto Real de la Placa · Lote Estándar Exportación', it: 'Foto Reale della Lastra · Lotto Standard Export' })}
+                    </div>
+                  </div>
+                ) : (
+                  <SlabTextureRenderer
+                    stone={stone}
+                    isBookmatched={false}
+                    isBacklit={isBacklit}
+                    showSlabDimensions={true}
+                    aspectRatio="slab"
+                    className="w-full h-full"
+                  />
+                )
               )}
 
               {modalView === 'architectural' && (
                 <div className="relative aspect-[1.58/1] w-full overflow-hidden">
                   <img
                     src={stone.architecturalPhotoUrl}
-                    alt={`Aplicação em projeto de ${stone.name}`}
+                    alt={`${stone.name}`}
                     referrerPolicy="no-referrer"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-3 left-3 px-3 py-1 bg-stone-950/85 backdrop-blur-md rounded border border-stone-800 text-xs text-amber-300 font-medium">
-                    Aplicação Real em Obra de Alto Luxo
+                    {tr({ pt: 'Aplicação Real em Obra de Alto Luxo', en: 'Real Application in High-End Luxury Project', es: 'Aplicación Real en Obra de Alto Lujo', it: 'Applicazione Reale in Progetto di Alto Lusso' })}
                   </div>
                 </div>
               )}
@@ -173,7 +207,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                   }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center text-[10px] text-amber-200/80 font-mono bg-black/30">
-                    2.5x Veios
+                    2.5x {tr({ pt: 'Veios', en: 'Veins', es: 'Vetas', it: 'Venature' })}
                   </div>
                 </div>
               )}
@@ -187,7 +221,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
             {/* Interactive View Controls (Active when vector-interactive mode) */}
             {modalView === 'vector-interactive' && (
               <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-stone-950/60 rounded-xl border border-stone-800">
-                <span className="text-xs text-stone-400 font-medium">Modos de Chapa:</span>
+                <span className="text-xs text-stone-400 font-medium">{tr({ pt: 'Modos de Chapa:', en: 'Slab Modes:', es: 'Modos de Placa:', it: 'Modalità Lastra:' })}</span>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
@@ -298,7 +332,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                   </div>
                   <div className="py-2 flex justify-between">
                     <span className="text-stone-400 font-sans">{t.modal.standardThickness}</span>
-                    <span className="text-stone-200">{stone.thicknesses.join(' e ')}</span>
+                    <span className="text-stone-200">{stone.thicknesses.join(tr({ pt: ' e ', en: ' and ', es: ' y ', it: ' e ' }))}</span>
                   </div>
                 </div>
               </div>
@@ -327,7 +361,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                 type="button"
                 onClick={() => {
                   onClose();
-                  onRequestQuote(stone);
+                  onRequestQuote(rawStone);
                 }}
                 className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold rounded-xl transition-colors shadow-lg shadow-amber-500/10 cursor-pointer text-xs sm:text-sm"
               >

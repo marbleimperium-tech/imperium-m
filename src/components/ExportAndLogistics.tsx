@@ -4,7 +4,7 @@ import { COMPANY_INFO } from '../data/stones';
 import { useI18n } from '../context/I18nContext';
 
 export const ExportAndLogistics: React.FC = () => {
-  const { t } = useI18n();
+  const { t, tr } = useI18n();
 
   return (
     <section id="exportacao" className="py-16 sm:py-24 bg-stone-950 text-stone-100 border-t border-stone-900">
@@ -95,15 +95,15 @@ export const ExportAndLogistics: React.FC = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 pt-2">
                 <div className="flex items-center gap-2 text-xs text-stone-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Portos EUA (Miami, Houston, NY)</span>
+                  <span>{tr({ pt: 'Portos EUA (Miami, Houston, NY)', en: 'US Ports (Miami, Houston, NY)', es: 'Puertos EE. UU. (Miami, Houston, NY)', it: 'Porti USA (Miami, Houston, NY)' })}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-stone-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Europa (Rotterdam, Valencia, Genova)</span>
+                  <span>{tr({ pt: 'Europa (Roterdã, Valência, Gênova)', en: 'Europe (Rotterdam, Valencia, Genoa)', es: 'Europa (Róterdam, Valencia, Génova)', it: 'Europa (Rotterdam, Valencia, Genova)' })}</span>
                 </div>
                 <div className="flex items-center gap-2 text-xs text-stone-300">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>Território nacional via carreta</span>
+                  <span>{tr({ pt: 'Território nacional via carreta dedicada', en: 'Domestic routes via dedicated freight', es: 'Territorio nacional en camión dedicado', it: 'Trasporto nazionale su gomma dedicato' })}</span>
                 </div>
               </div>
             </div>

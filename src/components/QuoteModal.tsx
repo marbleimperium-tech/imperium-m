@@ -17,7 +17,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   initialStone,
   initialNote = '',
 }) => {
-  const { t } = useI18n();
+  const { t, tr, ls, language } = useI18n();
   const [formData, setFormData] = useState<QuoteFormData>({
     fullName: '',
     companyName: '',
@@ -47,20 +47,27 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!formData.fullName.trim()) errs.fullName = 'Nome é obrigatório';
-    if (!formData.companyName.trim()) errs.companyName = 'Nome da empresa é obrigatório';
-    if (!formData.phone.trim()) errs.phone = 'Telefone/WhatsApp é obrigatório';
+    if (!formData.fullName.trim()) {
+      errs.fullName = tr({ pt: 'Nome é obrigatório', en: 'Name is required', es: 'El nombre es obligatorio', it: 'Il nome è obbligatorio' });
+    }
+    if (!formData.companyName.trim()) {
+      errs.companyName = tr({ pt: 'Nome da empresa é obrigatório', en: 'Company name is required', es: 'El nombre de la empresa es obligatorio', it: "Il nome dell'azienda è obbligatorio" });
+    }
+    if (!formData.phone.trim()) {
+      errs.phone = tr({ pt: 'Telefone/WhatsApp é obrigatório', en: 'Phone/WhatsApp is required', es: 'Teléfono/WhatsApp es obligatorio', it: 'Telefono/WhatsApp è obbligatorio' });
+    }
     if (!formData.email.trim() || !formData.email.includes('@')) {
-      errs.email = 'E-mail corporativo válido é obrigatório';
+      errs.email = tr({ pt: 'E-mail corporativo válido é obrigatório', en: 'Valid company email is required', es: 'E-mail corporativo válido es obligatorio', it: 'È richiesta un’e-mail aziendale valida' });
     }
     if (!formData.destinationCity.trim()) {
-      errs.destinationCity = 'Cidade/Porto de entrega é obrigatório';
+      errs.destinationCity = tr({ pt: 'Cidade/Porto de entrega é obrigatório', en: 'Delivery city/port is required', es: 'Ciudad/Puerto de entrega es obligatorio', it: 'Città/Porto di consegna è obbligatorio' });
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
 
-  const selectedStone = STONES_DATABASE.find((s) => s.id === formData.stoneId) || STONES_DATABASE[0];
+  const rawSelectedStone = STONES_DATABASE.find((s) => s.id === formData.stoneId) || STONES_DATABASE[0];
+  const selectedStone = ls(rawSelectedStone);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,23 +76,65 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   };
 
   const handleSendToWhatsApp = () => {
-    const text = `*SOLICITAÇÃO DE COTAÇÃO - IMPÉRIO MARBLE*
-• *Cliente:* ${formData.fullName}
-• *Empresa:* ${formData.companyName} (${formData.clientType.toUpperCase()})
-• *Telefone:* ${formData.phone}
-• *E-mail:* ${formData.email}
-• *Rocha de Interesse:* ${selectedStone.name} (${selectedStone.categoryLabel})
-• *Volume Estimado:* ${formData.estimatedQuantity} ${formData.volumeType}
-• *Destino / Cidade:* ${formData.destinationCity}
-• *Observações:* ${formData.observations || 'Nenhuma'}`;
+    let header = '*SOLICITAÇÃO DE COTAÇÃO - IMPÉRIO MARBLE*';
+    let lblClient = 'Cliente';
+    let lblCompany = 'Empresa';
+    let lblPhone = 'Telefone';
+    let lblEmail = 'E-mail';
+    let lblStone = 'Rocha de Interesse';
+    let lblVol = 'Volume Estimado';
+    let lblDest = 'Destino / Cidade';
+    let lblObs = 'Observações';
+
+    if (language === 'en') {
+      header = '*QUOTE REQUEST - IMPÉRIO MARBLE*';
+      lblClient = 'Client';
+      lblCompany = 'Company';
+      lblPhone = 'Phone';
+      lblEmail = 'Email';
+      lblStone = 'Stone of Interest';
+      lblVol = 'Estimated Volume';
+      lblDest = 'Destination / Port';
+      lblObs = 'Notes';
+    } else if (language === 'es') {
+      header = '*SOLICITUD DE COTIZACIÓN - IMPÉRIO MARBLE*';
+      lblClient = 'Cliente';
+      lblCompany = 'Empresa';
+      lblPhone = 'Teléfono';
+      lblEmail = 'E-mail';
+      lblStone = 'Roca de Interés';
+      lblVol = 'Volumen Estimado';
+      lblDest = 'Destino / Puerto';
+      lblObs = 'Observaciones';
+    } else if (language === 'it') {
+      header = '*RICHIESTA DI PREVENTIVO - IMPÉRIO MARBLE*';
+      lblClient = 'Cliente';
+      lblCompany = 'Azienda';
+      lblPhone = 'Telefono';
+      lblEmail = 'E-mail';
+      lblStone = 'Pietra di Interesse';
+      lblVol = 'Volume Stimato';
+      lblDest = 'Destinazione / Porto';
+      lblObs = 'Note';
+    }
+
+    const text = `${header}
+• *${lblClient}:* ${formData.fullName}
+• *${lblCompany}:* ${formData.companyName} (${formData.clientType.toUpperCase()})
+• *${lblPhone}:* ${formData.phone}
+• *${lblEmail}:* ${formData.email}
+• *${lblStone}:* ${selectedStone.name} (${selectedStone.categoryLabel})
+• *${lblVol}:* ${formData.estimatedQuantity} ${formData.volumeType}
+• *${lblDest}:* ${formData.destinationCity}
+• *${lblObs}:* ${formData.observations || '-'}`;
 
     window.open(`${COMPANY_INFO.contact.whatsappUrl}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto bg-black/85 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-0 sm:p-4 overflow-y-auto bg-black/85 backdrop-blur-md">
       <div
-        className="relative w-full max-w-2xl bg-stone-900 border border-stone-800 rounded-2xl shadow-2xl overflow-hidden text-stone-100 animate-in fade-in zoom-in-95 duration-200 my-auto"
+        className="relative w-full max-w-2xl bg-stone-900 border-0 sm:border border-stone-800 sm:rounded-2xl shadow-2xl overflow-hidden text-stone-100 animate-in fade-in zoom-in-95 duration-200 sm:my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -100,42 +149,38 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors cursor-pointer"
+            className="p-2 text-stone-400 hover:text-white rounded-lg hover:bg-stone-800 transition-colors cursor-pointer"
+            aria-label={tr({ pt: 'Fechar', en: 'Close', es: 'Cerrar', it: 'Chiudi' })}
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-5 sm:p-6 max-h-[80vh] overflow-y-auto">
+        <div className="p-5 sm:p-6 max-h-[82vh] overflow-y-auto">
           {isSubmitted ? (
-            <div className="py-8 sm:py-10 text-center space-y-4">
-              <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto">
+            <div className="py-8 text-center space-y-4">
+              <div className="w-16 h-16 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center mx-auto text-emerald-400">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-serif font-bold text-stone-100">
+              <h3 className="text-xl font-serif font-bold text-stone-100">
                 {t.rfq.successTitle}
               </h3>
               <p className="text-xs sm:text-sm text-stone-300 max-w-md mx-auto leading-relaxed">
                 {t.rfq.successDesc}
               </p>
 
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
                 <button
-                  type="button"
                   onClick={handleSendToWhatsApp}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 py-3 px-6 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-colors text-xs sm:text-sm shadow-lg cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>{t.rfq.accelerateWhatsApp}</span>
                 </button>
                 <button
-                  type="button"
-                  onClick={() => {
-                    setIsSubmitted(false);
-                    onClose();
-                  }}
-                  className="w-full sm:w-auto py-3 px-6 bg-stone-800 hover:bg-stone-700 text-stone-300 text-xs sm:text-sm font-medium rounded-xl transition-colors cursor-pointer"
+                  onClick={onClose}
+                  className="py-3 px-6 rounded-xl bg-stone-800 hover:bg-stone-700 text-stone-200 text-xs font-medium transition-colors cursor-pointer"
                 >
                   {t.rfq.close}
                 </button>
@@ -152,7 +197,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                     type="text"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="Ex: Carlos Albuquerque"
+                    placeholder={tr({ pt: 'Ex: Carlos Drummond', en: 'e.g. John Smith', es: 'Ej: Carlos Gómez', it: 'Es: Marco Rossi' })}
                     className="w-full px-3.5 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-100 placeholder-stone-600 focus:outline-none focus:border-amber-500"
                   />
                   {errors.fullName && (
@@ -168,7 +213,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                     type="text"
                     value={formData.companyName}
                     onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    placeholder="Ex: Marmoraria Imperial Ltda"
+                    placeholder={tr({ pt: 'Ex: Marmoraria Imperial Ltda', en: 'e.g. Stone Design LLC', es: 'Ej: Marmolería Imperial S.L.', it: 'Es: Marmi & Design S.r.l.' })}
                     className="w-full px-3.5 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-100 placeholder-stone-600 focus:outline-none focus:border-amber-500"
                   />
                   {errors.companyName && (
@@ -187,11 +232,21 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                     onChange={(e) => setFormData({ ...formData, clientType: e.target.value as any })}
                     className="w-full px-3.5 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-200 focus:outline-none focus:border-amber-500"
                   >
-                    <option value="marmoraria">Marmoraria / Beneficiadora</option>
-                    <option value="construtora">Construtora / Incorporadora</option>
-                    <option value="arquiteto">Escritório de Arquitetura / Design</option>
-                    <option value="importador">Importador Internacional / Trader</option>
-                    <option value="particular">Investidor / Proprietário</option>
+                    <option value="marmoraria">
+                      {tr({ pt: 'Marmoraria / Beneficiadora', en: 'Fabricator / Stone Shop', es: 'Marmolería / Transformadora', it: 'Marmista / Laboratorio' })}
+                    </option>
+                    <option value="construtora">
+                      {tr({ pt: 'Construtora / Incorporadora', en: 'Builder / Developer', es: 'Constructora / Promotora', it: 'Costruttore / Impresa' })}
+                    </option>
+                    <option value="arquiteto">
+                      {tr({ pt: 'Escritório de Arquitetura / Design', en: 'Architecture / Design Firm', es: 'Estudio de Arquitectura / Diseño', it: 'Studio di Architettura / Design' })}
+                    </option>
+                    <option value="importador">
+                      {tr({ pt: 'Importador Internacional / Trader', en: 'International Importer / Trader', es: 'Importador Internacional / Trader', it: 'Importatore Internazionale / Trader' })}
+                    </option>
+                    <option value="particular">
+                      {tr({ pt: 'Investidor / Proprietário', en: 'Investor / Owner', es: 'Inversionista / Propietario', it: 'Investitore / Proprietario' })}
+                    </option>
                   </select>
                 </div>
 
@@ -237,7 +292,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                     type="text"
                     value={formData.destinationCity}
                     onChange={(e) => setFormData({ ...formData, destinationCity: e.target.value })}
-                    placeholder="Ex: São Paulo - SP ou Port of Miami"
+                    placeholder={tr({ pt: 'Ex: São Paulo - SP ou Port of Miami', en: 'e.g. Miami, Houston, NY Port or City', es: 'Ej: Madrid, Valencia o Puerto de destino', it: 'Es: Milano, Genova o Porto di destinazione' })}
                     className="w-full px-3.5 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-100 placeholder-stone-600 focus:outline-none focus:border-amber-500"
                   />
                   {errors.destinationCity && (
@@ -259,7 +314,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                   >
                     {STONES_DATABASE.map((s) => (
                       <option key={s.id} value={s.id}>
-                        {s.name} ({s.categoryLabel})
+                        {s.name} ({ls(s).categoryLabel})
                       </option>
                     ))}
                   </select>
@@ -274,7 +329,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                       type="text"
                       value={formData.estimatedQuantity}
                       onChange={(e) => setFormData({ ...formData, estimatedQuantity: e.target.value })}
-                      placeholder="Qtd"
+                      placeholder={tr({ pt: 'Qtd', en: 'Qty', es: 'Cant', it: 'Q.tà' })}
                       className="w-full px-3.5 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-100 focus:outline-none focus:border-amber-500"
                     />
                   </div>
@@ -287,10 +342,10 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                       onChange={(e) => setFormData({ ...formData, volumeType: e.target.value as any })}
                       className="w-full px-2 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-200 focus:outline-none focus:border-amber-500"
                     >
-                      <option value="chapas">Chapas</option>
+                      <option value="chapas">{tr({ pt: 'Chapas', en: 'Slabs', es: 'Placas', it: 'Lastre' })}</option>
                       <option value="m2">m²</option>
-                      <option value="containers">Contêiner</option>
-                      <option value="blocos">Blocos</option>
+                      <option value="containers">{tr({ pt: 'Contêineres', en: 'Containers', es: 'Contenedores', it: 'Container' })}</option>
+                      <option value="blocos">{tr({ pt: 'Blocos', en: 'Blocks', es: 'Bloques', it: 'Blocchi' })}</option>
                     </select>
                   </div>
                 </div>
@@ -304,16 +359,20 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                   rows={3}
                   value={formData.observations}
                   onChange={(e) => setFormData({ ...formData, observations: e.target.value })}
-                  placeholder="Espessura (2cm ou 3cm), acabamento (polido, escovado), cronograma da obra..."
+                  placeholder={tr({
+                    pt: 'Espessura (2cm ou 3cm), acabamento (polido, escovado), cronograma da obra...',
+                    en: 'Thickness (2cm or 3cm), finish (polished, honed), project schedule...',
+                    es: 'Espesor (2cm o 3cm), acabado (pulido, apomazado), cronograma de obra...',
+                    it: 'Spessore (2cm o 3cm), finitura (lucida, levigata), cronoprogramma di cantiere...',
+                  })}
                   className="w-full px-3.5 py-2.5 bg-stone-950 border border-stone-800 rounded-xl text-stone-100 placeholder-stone-600 focus:outline-none focus:border-amber-500"
                 />
               </div>
 
-              {/* Submit Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+              <div className="pt-3 flex flex-col sm:flex-row gap-3">
                 <button
                   type="submit"
-                  className="w-full sm:flex-1 flex items-center justify-center gap-2 py-3 px-6 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold rounded-xl transition-all shadow-lg shadow-amber-500/10 cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-2 py-3 px-5 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold rounded-xl transition-colors shadow-lg shadow-amber-500/10 cursor-pointer"
                 >
                   <Send className="w-4 h-4" />
                   <span>{t.rfq.sendFormal}</span>
@@ -322,15 +381,11 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
                 <button
                   type="button"
                   onClick={handleSendToWhatsApp}
-                  className="w-full sm:w-auto flex items-center justify-center gap-2 py-3 px-5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-colors cursor-pointer"
+                  className="flex items-center justify-center gap-2 py-3 px-5 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-xl transition-colors cursor-pointer"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>{t.rfq.quoteWhatsApp}</span>
                 </button>
-              </div>
-
-              <div className="text-[11px] text-stone-500 text-center pt-1">
-                Atendimento direto: {COMPANY_INFO.contact.phone} ou {COMPANY_INFO.contact.email}
               </div>
             </form>
           )}

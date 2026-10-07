@@ -8,7 +8,7 @@ import { Search, SlidersHorizontal, ArrowUpRight, Sparkles, Layers, ShieldCheck,
 interface StoneCatalogProps {
   onOpenSlabDetail: (stone: StoneItem) => void;
   onRequestQuote: (stone: StoneItem) => void;
-  onSimulateInEnvironment: (stone: StoneItem) => void;
+  onSimulateInEnvironment?: (stone: StoneItem) => void;
 }
 
 export const StoneCatalog: React.FC<StoneCatalogProps> = ({
@@ -16,7 +16,7 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
   onRequestQuote,
   onSimulateInEnvironment,
 }) => {
-  const { t } = useI18n();
+  const { t, tr, ls } = useI18n();
   const [selectedCategory, setSelectedCategory] = useState<StoneCategory | 'all'>('all');
   const [selectedColor, setSelectedColor] = useState<string>('all');
   const [selectedFinish, setSelectedFinish] = useState<string>('all');
@@ -59,65 +59,67 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
     <section id="catalogo" className="py-16 sm:py-24 bg-stone-950 text-stone-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
-          <div className="max-w-2xl">
-            <div className="text-xs font-semibold uppercase tracking-wider text-amber-500 mb-2">
-              {t.catalog.kicker}
-            </div>
-            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-stone-100 tracking-tight">
-              {t.catalog.title}
-            </h2>
-            <p className="mt-3 text-stone-400 text-xs sm:text-base leading-relaxed">
-              {t.catalog.subtitle}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-3">
-            {/* Display Mode Switcher (Slabs vs Real Projects vs Bookmatch) */}
-            <div className="flex items-center gap-1 p-1 bg-stone-900 border border-stone-800 rounded-xl text-xs">
-              <button
-                type="button"
-                onClick={() => setGlobalDisplayMode('slab')}
-                className={`px-3 py-1.5 rounded-lg transition-colors cursor-pointer font-medium ${
-                  globalDisplayMode === 'slab'
-                    ? 'bg-amber-500 text-stone-950 font-bold shadow'
-                    : 'text-stone-400 hover:text-stone-200'
-                }`}
-              >
-                Chapas dos Lotes
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setGlobalDisplayMode('project')}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors cursor-pointer font-medium ${
-                  globalDisplayMode === 'project'
-                    ? 'bg-amber-500 text-stone-950 font-bold shadow'
-                    : 'text-stone-400 hover:text-stone-200'
-                }`}
-              >
-                <Home className="w-3.5 h-3.5" />
-                <span>Em Obras Reais</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setGlobalDisplayMode('bookmatch')}
-                className={`flex items-center gap-1 px-3 py-1.5 rounded-lg transition-colors cursor-pointer font-medium ${
-                  globalDisplayMode === 'bookmatch'
-                    ? 'bg-amber-500 text-stone-950 font-bold shadow'
-                    : 'text-stone-400 hover:text-stone-200'
-                }`}
-              >
-                <Layers className="w-3.5 h-3.5" />
-                <span>Bookmatch</span>
-              </button>
+        <div className="flex flex-col gap-4 mb-10 sm:mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <div className="text-xs font-semibold uppercase tracking-wider text-amber-500 mb-2">
+                {t.catalog.kicker}
+              </div>
+              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-stone-100 tracking-tight">
+                {t.catalog.title}
+              </h2>
+              <p className="mt-3 text-stone-400 text-xs sm:text-base leading-relaxed">
+                {t.catalog.subtitle}
+              </p>
             </div>
 
-            <span className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-900 border border-stone-800 text-xs text-stone-300">
+            <span className="hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-xl bg-stone-900 border border-stone-800 text-xs text-stone-300 shrink-0">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
               <span>{t.catalog.qualityBadge}</span>
             </span>
+          </div>
+
+          {/* Display Mode Switcher - full width scrollable on mobile */}
+          <div className="flex items-center gap-1 p-1 bg-stone-900 border border-stone-800 rounded-xl text-xs overflow-x-auto w-fit max-w-full">
+            <button
+              type="button"
+              onClick={() => setGlobalDisplayMode('slab')}
+              className={`flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors cursor-pointer font-medium whitespace-nowrap shrink-0 ${
+                globalDisplayMode === 'slab'
+                  ? 'bg-amber-500 text-stone-950 font-bold shadow'
+                  : 'text-stone-400 hover:text-stone-200'
+              }`}
+            >
+              <span className="hidden sm:inline">{tr({ pt: 'Chapas dos Lotes', en: 'Slab Lots', es: 'Lotes de Placas', it: 'Lotti Lastre' })}</span>
+              <span className="sm:hidden">{tr({ pt: 'Chapas', en: 'Slabs', es: 'Placas', it: 'Lastre' })}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setGlobalDisplayMode('project')}
+              className={`flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors cursor-pointer font-medium whitespace-nowrap shrink-0 ${
+                globalDisplayMode === 'project'
+                  ? 'bg-amber-500 text-stone-950 font-bold shadow'
+                  : 'text-stone-400 hover:text-stone-200'
+              }`}
+            >
+              <Home className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">{tr({ pt: 'Em Obras Reais', en: 'In Real Projects', es: 'En Obras Reales', it: 'In Progetti Reali' })}</span>
+              <span className="sm:hidden">{tr({ pt: 'Obras', en: 'Projects', es: 'Obras', it: 'Progetti' })}</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setGlobalDisplayMode('bookmatch')}
+              className={`flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors cursor-pointer font-medium whitespace-nowrap shrink-0 ${
+                globalDisplayMode === 'bookmatch'
+                  ? 'bg-amber-500 text-stone-950 font-bold shadow'
+                  : 'text-stone-400 hover:text-stone-200'
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              <span>Bookmatch</span>
+            </button>
           </div>
         </div>
 
@@ -250,10 +252,12 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {filteredStones.map((stone, idx) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+            {filteredStones.map((rawStone) => {
+              const stone = ls(rawStone);
+              return (
               <div
-                key={stone.id}
+                key={rawStone.id}
                 className="group flex flex-col bg-stone-900 border border-stone-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-black/70"
               >
                 {/* Slab Preview Screen with interactive micro-switches */}
@@ -284,7 +288,7 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
                   {/* Hover Inspect CTA Overlay */}
                   <div className="absolute inset-0 bg-stone-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10 pointer-events-none">
                     <span className="flex items-center gap-1.5 px-4 py-2 bg-stone-900/95 text-amber-300 text-xs font-semibold rounded-lg border border-amber-500/40 shadow-xl backdrop-blur-sm">
-                      <span>Inspecionar Lote & Ficha Técnica</span>
+                      <span>{tr({ pt: 'Inspecionar Lote & Ficha Técnica', en: 'Inspect Lot & Tech Specs', es: 'Inspeccionar Lote y Ficha Técnica', it: 'Ispeziona Lotto & Scheda Tecnica' })}</span>
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </span>
                   </div>
@@ -297,7 +301,7 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
                     <div className="flex items-center gap-2 text-xs text-stone-400 mb-1.5">
                       <span>{stone.origin}</span>
                       <span aria-hidden="true">·</span>
-                      <span>Dureza Mohs {stone.specs.mohsHardness}</span>
+                      <span>{tr({ pt: 'Dureza Mohs', en: 'Mohs Hardness', es: 'Dureza Mohs', it: 'Durezza Mohs' })} {stone.specs.mohsHardness}</span>
                     </div>
 
                     <h3
@@ -322,11 +326,11 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
                     <div className="grid grid-cols-2 gap-2 text-xs">
                       <button
                         type="button"
-                        onClick={() => onSimulateInEnvironment(stone)}
+                        onClick={() => onOpenSlabDetail(stone)}
                         className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-stone-800 hover:bg-stone-700 text-stone-200 rounded-xl transition-colors text-xs font-medium cursor-pointer"
                       >
                         <Layers className="w-3.5 h-3.5 text-amber-400" />
-                        <span>Simular Projeto</span>
+                        <span>{tr({ pt: 'Ver Ficha & Fotos', en: 'View Specs & Photos', es: 'Ver Ficha y Fotos', it: 'Vedi Scheda & Foto' })}</span>
                       </button>
 
                       <button
@@ -334,13 +338,14 @@ export const StoneCatalog: React.FC<StoneCatalogProps> = ({
                         onClick={() => onRequestQuote(stone)}
                         className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold rounded-xl transition-colors text-xs cursor-pointer shadow-md"
                       >
-                        <span>Cotar Lote</span>
+                        <span>{t.catalog.quickQuote}</span>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         )}
       </div>

@@ -43,8 +43,8 @@ export const EnvironmentSimulator: React.FC<EnvironmentSimulatorProps> = ({
         </div>
 
         {/* Room Type Selector Tabs (Scrollable on mobile) */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
-          <div className="flex items-center gap-1.5 p-1.5 bg-stone-900/80 rounded-xl border border-stone-800 overflow-x-auto max-w-full">
+        <div className="flex flex-col gap-3 mb-6 sm:mb-8">
+          <div className="flex items-center gap-1.5 p-1.5 bg-stone-900/80 rounded-xl border border-stone-800 overflow-x-auto">
             {roomKeys.map((key) => {
               const r = t.simulator.rooms[key];
               return (
@@ -63,7 +63,7 @@ export const EnvironmentSimulator: React.FC<EnvironmentSimulatorProps> = ({
             })}
           </div>
 
-          {/* Toggle 3D Interactive vs Real Photo in High-End Installation */}
+          {/* Toggle 3D Interactive vs Real Photo */}
           <div className="flex items-center gap-1 p-1 bg-stone-900/80 rounded-xl border border-stone-800 text-xs w-fit">
             <button
               onClick={() => setViewRenderMode('3d-svg')}
@@ -85,7 +85,8 @@ export const EnvironmentSimulator: React.FC<EnvironmentSimulatorProps> = ({
               }`}
             >
               <ImageIcon className="w-3.5 h-3.5" />
-              <span>Foto Real em Projeto</span>
+              <span className="hidden sm:inline">Foto Real em Projeto</span>
+              <span className="sm:hidden">Foto Real</span>
             </button>
           </div>
         </div>
@@ -327,7 +328,7 @@ export const EnvironmentSimulator: React.FC<EnvironmentSimulatorProps> = ({
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5 max-h-[460px] sm:max-h-[580px] overflow-y-auto pr-1">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-1 gap-2 sm:gap-2.5 max-h-[280px] sm:max-h-[460px] lg:max-h-[580px] overflow-y-auto pr-1">
               {STONES_DATABASE.map((stone) => {
                 const isSelected = stone.id === selectedStoneId;
                 return (

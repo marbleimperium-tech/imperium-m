@@ -4,7 +4,7 @@ import { COMPANY_INFO } from '../data/stones';
 import { useI18n } from '../context/I18nContext';
 
 export const CompanyAbout: React.FC = () => {
-  const { t } = useI18n();
+  const { t, tr } = useI18n();
 
   return (
     <section id="sobre" className="py-16 sm:py-24 bg-stone-900/60 border-t border-stone-800 text-stone-100">
@@ -16,44 +16,22 @@ export const CompanyAbout: React.FC = () => {
               {/* Header Badge */}
               <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-stone-800">
                 <span className="text-xs uppercase tracking-widest text-amber-500 font-semibold">
-                  Jazidas & Beneficiamento
+                  {tr({ pt: 'Jazidas & Beneficiamento', en: 'Quarries & Processing', es: 'Canteras y Procesamiento', it: 'Cave & Lavorazione' })}
                 </span>
                 <span className="text-xs text-stone-400 font-mono">Espírito Santo, BR</span>
               </div>
 
-              {/* Graphic Quarry / Block Yard Representation */}
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-900 border border-stone-800">
-                <svg viewBox="0 0 400 300" className="w-full h-full object-cover">
-                  <defs>
-                    <linearGradient id="quarryGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="#292524" />
-                      <stop offset="50%" stopColor="#1c1917" />
-                      <stop offset="100%" stopColor="#0c0a09" />
-                    </linearGradient>
-                    <linearGradient id="sunbeam" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="rgba(212, 175, 55, 0.4)" />
-                      <stop offset="100%" stopColor="transparent" />
-                    </linearGradient>
-                  </defs>
+              {/* Real Quarry & Extraction Operations Image */}
+              <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-stone-900 border border-stone-800 group">
+                <img
+                  src="/images/jazidas-beneficiamento.png"
+                  alt={tr({ pt: 'Jazidas de rochas e extração com fio diamantado', en: 'Stone quarries and diamond wire extraction', es: 'Canteras de roca y extracción con hilo diamantado', it: 'Cave di pietra ed estrazione con filo diamantato' })}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-stone-950/70 via-transparent to-stone-950/20 pointer-events-none" />
 
-                  <rect width="400" height="300" fill="url(#quarryGrad)" />
-                  <polygon points="0,60 120,40 160,110 0,140" fill="#3c3836" />
-                  <polygon points="120,40 400,20 400,100 160,110" fill="#44403c" />
-
-                  <polygon points="0,140 180,105 240,180 0,220" fill="#292524" />
-                  <polygon points="180,105 400,100 400,190 240,180" fill="#322e2b" />
-
-                  {/* Cut Monolithic Granite & Quartzite Blocks */}
-                  <rect x="60" y="190" width="70" height="45" fill="#57534e" stroke="#1c1917" strokeWidth="1.5" />
-                  <rect x="135" y="190" width="75" height="45" fill="#44403c" stroke="#1c1917" strokeWidth="1.5" />
-                  <rect x="215" y="195" width="80" height="40" fill="#57534e" stroke="#1c1917" strokeWidth="1.5" />
-                  <rect x="100" y="150" width="70" height="40" fill="#78716c" stroke="#1c1917" strokeWidth="1.5" />
-                  <rect x="175" y="152" width="70" height="38" fill="#57534e" stroke="#1c1917" strokeWidth="1.5" />
-
-                  <polygon points="0,0 280,0 400,300 120,300" fill="url(#sunbeam)" opacity="0.6" />
-                </svg>
-
-                <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-stone-950/85 backdrop-blur-md rounded border border-stone-800 text-[10px] text-stone-300 font-mono">
+                <div className="absolute bottom-3 left-3 px-2.5 py-1 bg-stone-950/85 backdrop-blur-md rounded border border-stone-800 text-[10px] text-stone-200 font-mono">
                   {t.about.quarryTag}
                 </div>
               </div>
@@ -94,32 +72,48 @@ export const CompanyAbout: React.FC = () => {
               <div className="flex items-start gap-3 p-3 rounded-lg bg-stone-900/80 border border-stone-800">
                 <Mountain className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-semibold text-stone-200">Seleção Rigorosa de Jazidas</h4>
-                  <p className="text-[11px] text-stone-400 mt-0.5">Homologação de frentes com estabilidade mineral constante.</p>
+                  <h4 className="text-xs font-semibold text-stone-200">
+                    {tr({ pt: 'Seleção Rigorosa de Jazidas', en: 'Strict Quarry Selection', es: 'Selección Rigurosa de Canteras', it: 'Rigorosa Selezione delle Cave' })}
+                  </h4>
+                  <p className="text-[11px] text-stone-400 mt-0.5">
+                    {tr({ pt: 'Homologação de frentes com estabilidade mineral constante.', en: 'Approval of mining faces with consistent mineral stability.', es: 'Homologación de frentes con estabilidad mineral constante.', it: 'Omologazione di fronti con stabilità minerale costante.' })}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 p-3 rounded-lg bg-stone-900/80 border border-stone-800">
                 <Award className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-semibold text-stone-200">Padronização Export Grade</h4>
-                  <p className="text-[11px] text-stone-400 mt-0.5">Chapas com dimensões completas, esquadro perfeito e sem fissuras.</p>
+                  <h4 className="text-xs font-semibold text-stone-200">
+                    {tr({ pt: 'Padronização Export Grade', en: 'Export Grade Standardization', es: 'Estandarización Grado Exportación', it: 'Standardizzazione Export Grade' })}
+                  </h4>
+                  <p className="text-[11px] text-stone-400 mt-0.5">
+                    {tr({ pt: 'Chapas com dimensões completas, esquadro perfeito e sem fissuras.', en: 'Full-dimension slabs with perfect squaring and no fissures.', es: 'Placas con dimensiones completas, escuadra perfecta y sin fisuras.', it: 'Lastre a dimensione intera, squadro perfetto e prive di fessure.' })}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 p-3 rounded-lg bg-stone-900/80 border border-stone-800">
                 <Recycle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-semibold text-stone-200">Compromisso Ambiental</h4>
-                  <p className="text-[11px] text-stone-400 mt-0.5">Licenciamento ambiental pleno e reuso hídrico em ciclo fechado.</p>
+                  <h4 className="text-xs font-semibold text-stone-200">
+                    {tr({ pt: 'Compromisso Ambiental', en: 'Environmental Commitment', es: 'Compromiso Ambiental', it: 'Impegno Ambientale' })}
+                  </h4>
+                  <p className="text-[11px] text-stone-400 mt-0.5">
+                    {tr({ pt: 'Licenciamento ambiental pleno e reuso hídrico em ciclo fechado.', en: 'Full environmental licensing and closed-loop water recycling.', es: 'Licenciamiento ambiental pleno y reciclaje hídrico en ciclo cerrado.', it: 'Piena conformità ambientale e riutilizzo idrico a ciclo chiuso.' })}
+                  </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-3 p-3 rounded-lg bg-stone-900/80 border border-stone-800">
                 <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="text-xs font-semibold text-stone-200">Transparência Corporativa</h4>
-                  <p className="text-[11px] text-stone-400 mt-0.5">CNPJ registrado: {COMPANY_INFO.cnpj}.</p>
+                  <h4 className="text-xs font-semibold text-stone-200">
+                    {tr({ pt: 'Transparência Corporativa', en: 'Corporate Transparency', es: 'Transparencia Corporativa', it: 'Trasparenza Aziendale' })}
+                  </h4>
+                  <p className="text-[11px] text-stone-400 mt-0.5">
+                    {tr({ pt: 'CNPJ registrado', en: 'Registered Tax ID', es: 'Registro oficial', it: 'P. IVA / CNPJ registrato' })}: {COMPANY_INFO.cnpj}.
+                  </p>
                 </div>
               </div>
             </div>

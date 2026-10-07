@@ -8,7 +8,7 @@ interface ContactSectionProps {
 }
 
 export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal }) => {
-  const { t } = useI18n();
+  const { t, tr } = useI18n();
 
   return (
     <section id="contato" className="py-16 sm:py-24 bg-stone-950 text-stone-100 border-t border-stone-900">
@@ -53,7 +53,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
                   {COMPANY_INFO.contact.phone}
                 </a>
                 <p className="text-xs text-stone-400 mt-1">
-                  Atendimento para cotações no atacado, especificações técnicas e laudos de rochas.
+                  {tr({
+                    pt: 'Atendimento para cotações no atacado, especificações técnicas e laudos de rochas.',
+                    en: 'Customer support for wholesale quotes, technical specifications and stone test reports.',
+                    es: 'Atención para cotizaciones al por mayor, especificaciones técnicas e informes de rocas.',
+                    it: 'Assistenza per preventivi all’ingrosso, specifiche tecniche e perizie sulle pietre.',
+                  })}
                 </p>
               </div>
             </div>
@@ -72,7 +77,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
                   {COMPANY_INFO.contact.email}
                 </a>
                 <p className="text-xs text-stone-400 mt-1">
-                  Envie sua lista de corte, plantas e solicitações de RFQ para resposta formal com ficha técnica.
+                  {tr({
+                    pt: 'Envie sua lista de corte, plantas e solicitações de RFQ para resposta formal com ficha técnica.',
+                    en: 'Send your cut list, blueprints and RFQ requests for a formal response with technical specs.',
+                    es: 'Envíe su lista de despiece, planos y solicitudes de RFQ para respuesta formal con ficha técnica.',
+                    it: 'Invia distinta di taglio, planimetrie e richieste di offerta per una risposta formale con scheda tecnica.',
+                  })}
                 </p>
               </div>
             </div>
@@ -88,10 +98,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
                   {COMPANY_INFO.address.street}, {COMPANY_INFO.address.number}, {COMPANY_INFO.address.complement}
                 </div>
                 <div className="text-xs text-stone-400 mt-0.5">
-                  Bairro {COMPANY_INFO.address.neighborhood} · {COMPANY_INFO.address.city} - {COMPANY_INFO.address.state}
+                  {tr({ pt: 'Bairro', en: 'District', es: 'Barrio', it: 'Quartiere' })} {COMPANY_INFO.address.neighborhood} · {COMPANY_INFO.address.city} - {COMPANY_INFO.address.state}
                 </div>
                 <div className="text-xs text-stone-500 font-mono mt-0.5">
-                  CEP {COMPANY_INFO.address.zipCode} · Brasil
+                  {tr({ pt: 'CEP', en: 'ZIP', es: 'CP', it: 'CAP' })} {COMPANY_INFO.address.zipCode} · {tr({ pt: 'Brasil', en: 'Brazil', es: 'Brasil', it: 'Brasile' })}
                 </div>
               </div>
             </div>
@@ -99,7 +109,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
             {/* Working Hours */}
             <div className="p-4 bg-stone-900/60 border border-stone-800/80 rounded-xl flex items-center gap-3 text-xs text-stone-400">
               <Clock className="w-4 h-4 text-amber-500 shrink-0" />
-              <span>{COMPANY_INFO.contact.hours}</span>
+              <span>
+                {tr({
+                  pt: 'Segunda a Sexta: 08:00 às 18:00 | Sábado: 08:00 às 12:00',
+                  en: 'Monday to Friday: 08:00 - 18:00 | Saturday: 08:00 - 12:00',
+                  es: 'Lunes a Viernes: 08:00 a 18:00 | Sábado: 08:00 a 12:00',
+                  it: 'Lunedì - Venerdì: 08:00 - 18:00 | Sabato: 08:00 - 12:00',
+                })}
+              </span>
             </div>
           </div>
 
@@ -116,7 +133,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
               </div>
               <span className="flex items-center gap-1 text-xs text-stone-400 font-mono">
                 <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Polo Internacional</span>
+                <span>{tr({ pt: 'Polo Internacional', en: 'International Hub', es: 'Polo Internacional', it: 'Polo Internazionale' })}</span>
               </span>
             </div>
 
@@ -128,53 +145,70 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
                     <stop offset="0%" stopColor="#1c1917" />
                     <stop offset="100%" stopColor="#0c0a09" />
                   </linearGradient>
-                  <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#142129" />
-                    <stop offset="100%" stopColor="#0c161d" />
-                  </linearGradient>
+                  <pattern id="gridPattern" width="30" height="30" patternUnits="userSpaceOnUse">
+                    <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#292524" strokeWidth="0.5" />
+                  </pattern>
                 </defs>
 
                 <rect width="600" height="340" fill="url(#mapCoast)" />
+                <rect width="600" height="340" fill="url(#gridPattern)" />
 
+                {/* Stylized Coastline */}
                 <path
-                  d="M420,0 Q390,90 410,170 T380,260 Q390,300 440,340 L600,340 L600,0 Z"
-                  fill="url(#oceanGrad)"
+                  d="M 180 0 Q 220 80 200 160 T 260 260 T 320 340 L 0 340 L 0 0 Z"
+                  fill="#141210"
+                  stroke="#292524"
+                  strokeWidth="1.5"
                 />
-                <text x="490" y="180" fill="#2d4a5e" fontSize="13" fontFamily="sans-serif" letterSpacing="3">
+
+                {/* Ocean Label */}
+                <text x="440" y="180" fill="#44403c" fontSize="11" letterSpacing="4" fontFamily="monospace">
                   OCEANO ATLÂNTICO
                 </text>
 
-                <path d="M280,0 Q310,120 330,220 T360,340" stroke="#44403c" strokeWidth="4" fill="none" />
-                <path d="M280,0 Q310,120 330,220 T360,340" stroke="#f59e0b" strokeWidth="1" strokeDasharray="6,4" fill="none" />
-
-                <circle cx="340" cy="80" r="4" fill="#a8a29e" />
-                <text x="350" y="85" fill="#a8a29e" fontSize="10" fontFamily="sans-serif">
-                  Porto de Vitória / Tubarão
+                {/* Port Vitória Route */}
+                <path d="M 230 90 L 250 180" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="3 3" />
+                <circle cx="230" cy="90" r="4" fill="#f59e0b" />
+                <text x="242" y="94" fill="#a8a29e" fontSize="10" fontFamily="sans-serif">
+                  Porto de Vitória (ES)
                 </text>
 
-                <circle cx="350" cy="220" r="28" fill="rgba(212, 175, 55, 0.15)" />
-                <circle cx="350" cy="220" r="14" fill="rgba(212, 175, 55, 0.4)" />
-                <circle cx="350" cy="220" r="6" fill="#f59e0b" />
+                {/* Port Tubarão */}
+                <circle cx="245" cy="70" r="4" fill="#f59e0b" />
+                <text x="257" y="74" fill="#a8a29e" fontSize="10" fontFamily="sans-serif">
+                  Porto de Tubarão
+                </text>
 
-                <g transform="translate(370, 210)">
-                  <rect width="180" height="46" rx="6" fill="#1c1917" stroke="#d4af37" strokeWidth="1" />
-                  <text x="10" y="18" fill="#f59e0b" fontSize="10" fontWeight="bold">
-                    IMPÉRIO MARBLE LTDA
+                {/* Main Hub: Guarapari */}
+                <circle cx="250" cy="180" r="16" fill="#f59e0b" fillOpacity="0.15" />
+                <circle cx="250" cy="180" r="8" fill="#f59e0b" fillOpacity="0.3" className="animate-ping" />
+                <circle cx="250" cy="180" r="5" fill="#f59e0b" />
+
+                <g transform="translate(265, 170)">
+                  <rect x="0" y="0" width="165" height="36" rx="6" fill="#0c0a09" fillOpacity="0.9" stroke="#d97706" strokeWidth="1" />
+                  <text x="10" y="15" fill="#f59e0b" fontSize="11" fontWeight="bold" fontFamily="sans-serif">
+                    IMPÉRIO MARBLE
                   </text>
-                  <text x="10" y="34" fill="#d6d3d1" fontSize="9">
-                    Av. Pe. José de Anchieta, 2165
+                  <text x="10" y="28" fill="#a8a29e" fontSize="9" fontFamily="monospace">
+                    Hub Guarapari / ES
+                  </text>
+                </g>
+
+                {/* Distance Badge */}
+                <g transform="translate(20, 20)">
+                  <rect x="0" y="0" width="130" height="24" rx="4" fill="#0c0a09" fillOpacity="0.85" stroke="#292524" />
+                  <text x="8" y="16" fill="#10b981" fontSize="10" fontFamily="monospace">
+                    ● Portos a 55 km
                   </text>
                 </g>
               </svg>
 
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between px-3 py-2 bg-stone-950/85 backdrop-blur-md rounded-lg border border-stone-800 text-[10px] sm:text-[11px] text-stone-300">
-                <span className="truncate">
-                  {COMPANY_INFO.address.street}, {COMPANY_INFO.address.number}, Sl 12 · Guarapari - ES
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between p-2.5 bg-stone-950/90 backdrop-blur-md rounded-lg border border-stone-800 text-xs">
+                <span className="text-stone-300 truncate">
+                  {COMPANY_INFO.address.fullFormatted}
                 </span>
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                    COMPANY_INFO.address.fullFormatted
-                  )}`}
+                  href={`https://maps.google.com/?q=${encodeURIComponent(COMPANY_INFO.address.fullFormatted)}`}
                   target="_blank"
                   rel="noreferrer"
                   className="flex items-center gap-1 text-amber-400 hover:text-amber-300 font-medium shrink-0 ml-2"
@@ -197,7 +231,14 @@ export const ContactSection: React.FC<ContactSectionProps> = ({ onOpenQuoteModal
               </div>
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-stone-400">
                 <span>{t.contact.mainActivity}</span>
-                <strong className="text-stone-200">Comércio Atacadista de Mármores e Granitos</strong>
+                <strong className="text-stone-200">
+                  {tr({
+                    pt: 'Comércio Atacadista de Mármores e Granitos',
+                    en: 'Wholesale Trade in Marble and Granite',
+                    es: 'Comercio Mayorista de Mármoles y Granitos',
+                    it: 'Commercio all’Ingrosso di Marmi e Graniti',
+                  })}
+                </strong>
               </div>
             </div>
 
