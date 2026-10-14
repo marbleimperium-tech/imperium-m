@@ -410,10 +410,11 @@ export const COMPANY_INFO = {
   },
   contact: {
     email: 'imperium.marble@outlook.com',
-    phone: '(11) 3404-1255',
-    phoneClean: '+551134041255',
-    whatsapp: '+551134041255',
-    whatsappUrl: 'https://wa.me/551134041255',
+    phone: '+55 (27) 99762-5108',
+    phoneClean: '+5527997625108',
+    whatsapp: '+55 (27) 99762-5108',
+    whatsappClean: '+5527997625108',
+    whatsappUrl: 'https://wa.me/5527997625108',
     hours: 'Segunda a Sexta: 08:00 às 18:00 | Sábado: 08:00 às 12:00'
   },
   stats: [
