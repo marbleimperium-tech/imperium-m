@@ -409,7 +409,7 @@ export const COMPANY_INFO = {
     fullFormatted: 'Av. Padre José de Anchieta, 2165, Sala 12 - Aeroporto, Guarapari - ES, CEP 29216-015'
   },
   contact: {
-    email: 'imperium.marble@outlook.com',
+    email: 'sales@marbleimperium.com',
     phone: '+55 (27) 99762-5108',
     phoneClean: '+5527997625108',
     whatsapp: '+55 (27) 99762-5108',

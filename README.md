@@ -15,7 +15,7 @@ Plataforma digital corporativa e catálogo técnico desenvolvido para marmoraria
 | **CNPJ** | `69.081.787/0001-60` |
 | **Telefone** | [**+55 (27) 99762-5108**](tel:+5527997625108) |
 | **WhatsApp Oficial** | [**+55 (27) 99762-5108** (Abrir conversa)](https://wa.me/5527997625108) |
-| **E-mail Comercial** | [imperium.marble@outlook.com](mailto:imperium.marble@outlook.com) |
+| **E-mail Comercial** | [sales@marbleimperium.com](mailto:sales@marbleimperium.com) |
 | **Endereço** | Av. Padre José de Anchieta, 2165, Sala 12 - Aeroporto, Guarapari - ES, CEP 29216-015, Brasil |
 | **Horário de Atendimento** | Segunda a Sexta: 08:00 às 18:00 \| Sábado: 08:00 às 12:00 (BRT) |
 
