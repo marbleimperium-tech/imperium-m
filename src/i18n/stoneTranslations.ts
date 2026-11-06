@@ -11,6 +11,7 @@ const DICT: Record<string, L3> = {
   'Escovado': { en: 'Brushed', es: 'Cepillado', it: 'Spazzolato' },
   'Acetinado': { en: 'Satin', es: 'Satinado', it: 'Satinato' },
   'Flamado': { en: 'Flamed', es: 'Flameado', it: 'Fiammato' },
+  'Bruto': { en: 'Raw / Block', es: 'Bruto / Bloque', it: 'Grezzo / Blocco' },
   // Category labels
   'Quartzito Exótico': { en: 'Exotic Quartzite', es: 'Cuarcita Exótica', it: 'Quarzite Esotica' },
   'Mármore Nobre': { en: 'Noble Marble', es: 'Mármol Noble', it: 'Marmo Pregiato' },
@@ -20,6 +21,7 @@ const DICT: Record<string, L3> = {
 };
 
 interface StoneL10n {
+  name?: L3;
   origin: L3;
   colorLabel: L3;
   description: L3;
@@ -228,6 +230,250 @@ const STONE_L10N: Record<string, StoneL10n> = {
       { en: 'Lots selected block by block', es: 'Lotes seleccionados bloque a bloque', it: 'Lotti selezionati blocco per blocco' },
     ],
   },
+  'quartzite-blocks': {
+    name: {
+      en: 'Quartzite Blocks',
+      es: 'Bloques de Cuarcita',
+      it: 'Blocchi di Quarzite',
+    },
+    origin: {
+      en: 'Espírito Santo / Bahia, Brazil',
+      es: 'Espírito Santo / Bahía, Brasil',
+      it: 'Espírito Santo / Bahia, Brasile',
+    },
+    colorLabel: {
+      en: 'Emerald Green & Crystalline Grey',
+      es: 'Verde Esmeralda y Gris Cristalino',
+      it: 'Verde Smeraldo & Grigio Cristallino',
+    },
+    description: {
+      en: 'Natural stones prized for their patterns, veins, and variety of colors. They can be traded as raw blocks for gangsaw cutting or as processed slabs for high-end architectural projects.',
+      es: 'Rocas naturales valoradas por sus dibujos, vetas y variedad de colores. Pueden comercializarse en bloques brutos para corte en telar o en placas procesadas para proyectos de alto nivel.',
+      it: 'Rocce naturali apprezzate per i loro disegni, venature e varietà di colori. Possono essere commercializzate in blocchi grezzi da segare o in lastre lavorate per progetti architettonici di pregio.',
+    },
+    recommendedUses: [
+      {
+        en: 'Block gangsaw cutting and slab processing',
+        es: 'Corte en telar y procesamiento de placas',
+        it: 'Segagione a telaio e lavorazione lastre',
+      },
+      {
+        en: 'Large-scale corporate and residential projects',
+        es: 'Grandes obras corporativas y residenciales',
+        it: 'Grandi opere residenziali e commerciali',
+      },
+      {
+        en: 'Gourmet islands and luxury countertops',
+        es: 'Islas gourmet y encimeras de alto estándar',
+        it: 'Isole gourmet e piani di alto standard',
+      },
+      {
+        en: 'High-impact façades and decorative panels',
+        es: 'Fachadas y paneles de pared de alto impacto',
+        it: 'Facciate e pannelli decorativi di grande impatto',
+      },
+    ],
+    features: [
+      {
+        en: 'Quarry supply available in raw blocks or finished slabs',
+        es: 'Suministro de cantera disponible en bloques brutos o placas',
+        it: 'Fornitura da cava disponibile in blocchi grezzi o lastre finite',
+      },
+      {
+        en: 'Exuberant organic patterns and unique natural veins',
+        es: 'Vetas y diseños orgánicos exuberantes y exclusivos',
+        it: 'Venature e disegni organici esuberanti ed esclusivi',
+      },
+      {
+        en: 'High mineral hardness (Mohs 7) and superior durability',
+        es: 'Alta dureza mineral (Mohs 7) y durabilidad superior',
+        it: 'Elevata durezza minerale (Mohs 7) e durabilità superiore',
+      },
+    ],
+  },
+  'natural-stone-slabs': {
+    name: {
+      en: 'Natural Stone Slabs',
+      es: 'Placas de Rocas Naturales',
+      it: 'Lastre di Pietre Naturali',
+    },
+    origin: {
+      en: 'Espírito Santo, Brazil',
+      es: 'Espírito Santo, Brasil',
+      it: 'Espírito Santo, Brasile',
+    },
+    colorLabel: {
+      en: 'Cosmic Black & White Veins',
+      es: 'Negro Cósmico y Vetas Blancas',
+      it: 'Nero Cosmico & Venature Bianche',
+    },
+    description: {
+      en: 'Precision-cut and processed natural stone materials, available in polished, honed, brushed, and other finishes according to availability and project specifications.',
+      es: 'Materiales cortados y procesados, con opciones de acabado pulido, apomazado, cepillado y otros, según disponibilidad y especificaciones del proyecto.',
+      it: 'Materiali tagliati e lavorati, con opzioni di finitura lucida, levigata, spazzolata e altre, in base alla disponibilità e alle specifiche di progetto.',
+    },
+    recommendedUses: [
+      {
+        en: 'High-end kitchen countertops and islands',
+        es: 'Encimeras de cocina e islas de alto nivel',
+        it: 'Piani cucina e isole di alto livello',
+      },
+      {
+        en: 'Vertical wall cladding and decorative panels',
+        es: 'Revestimientos verticales y paneles decorativos',
+        it: 'Rivestimenti verticali e pannelli decorativi',
+      },
+      {
+        en: 'Continuous luxury commercial and residential floors',
+        es: 'Pisos continuos comerciales y residenciales de lujo',
+        it: 'Pavimenti continui commerciali e residenziali di lusso',
+      },
+      {
+        en: 'Monumental fireplaces and architectural staircases',
+        es: 'Chimeneas monumentales y escalinatas arquitectónicas',
+        it: 'Camini monumentali e scalinate architettoniche',
+      },
+    ],
+    features: [
+      {
+        en: 'Calibrated slabs with factory reinforcement resin',
+        es: 'Placas calibradas con resinado y malla de refuerzo de fábrica',
+        it: 'Lastre calibrate con resinatura e rete di rinforzo di fabbrica',
+      },
+      {
+        en: 'Premium finishes: polished, honed, brushed, and satin',
+        es: 'Acabados nobles: pulido, apomazado, cepillado y satinado',
+        it: 'Finiture pregiate: lucido, levigato, spazzolato e satinato',
+      },
+      {
+        en: 'Available in bookmatched mirrored compositions',
+        es: 'Disponible en composiciones bookmatched espejadas',
+        it: 'Disponibile in composizioni bookmatch a specchio',
+      },
+    ],
+  },
+  'marble-blocks': {
+    name: {
+      en: 'Marble Blocks',
+      es: 'Bloques de Mármol',
+      it: 'Blocchi di Marmo',
+    },
+    origin: {
+      en: 'Espírito Santo / Paraná, Brazil & Imports',
+      es: 'Espírito Santo / Paraná, Brasil e Importaciones',
+      it: 'Espírito Santo / Paraná, Brasile & Importazioni',
+    },
+    colorLabel: {
+      en: 'Pure White & Subtle Grey',
+      es: 'Blanco Puro y Gris Suave',
+      it: 'Bianco Puro & Grigio Delicato',
+    },
+    description: {
+      en: 'Blocks quarried in large dimensions, featuring natural patterns, veins, and tonalities unique to each deposit. Ideal for gangsaw cutting and high-end slab processing.',
+      es: 'Bloques extraídos en grandes dimensiones, con patrones naturales, vetas y tonalidades características de cada cantera. Ideales para corte en telar y procesamiento de placas de alta gama.',
+      it: 'Blocchi estratti in grandi dimensioni, con disegni naturali, venature e tonalità caratteristiche di ogni cava. Ideali per la segagione a telaio e la produzione di lastre pregiate.',
+    },
+    recommendedUses: [
+      {
+        en: 'Gangsaw cutting and diamond wire processing',
+        es: 'Corte en telar y procesamiento con hilo diamantado',
+        it: 'Segagione a telaio e lavorazione a filo diamantato',
+      },
+      {
+        en: 'High-end architectural and residential projects',
+        es: 'Proyectos arquitectónicos y residenciales de alto nivel',
+        it: 'Progetti architettonici e residenziali di alto livello',
+      },
+      {
+        en: 'Luxury bathrooms, sculptural vanities, and basins',
+        es: 'Baños de lujo, encimeras y lavabos esculturales',
+        it: 'Bagni di lusso, piani lavabo e vasche scultoree',
+      },
+      {
+        en: 'Noble cladding and mirrored bookmatched compositions',
+        es: 'Revestimientos nobles y composiciones bookmatched espejadas',
+        it: 'Rivestimenti pregiati e composizioni bookmatch a specchio',
+      },
+    ],
+    features: [
+      {
+        en: 'First-choice square blocks in large commercial dimensions',
+        es: 'Bloques cúbicos de primera selección en grandes dimensiones',
+        it: 'Blocchi squadrati di prima scelta in grandi dimensioni commerciali',
+      },
+      {
+        en: 'Pure white background with elegant natural veining',
+        es: 'Fondo blanco puro con vetas naturales elegantes',
+        it: 'Fondo bianco puro con venature naturali eleganti',
+      },
+      {
+        en: 'Ready for export shipping in containers or breakbulk',
+        es: 'Disponibilidad inmediata para exportación en contenedores',
+        it: 'Disponibilità immediata per esportazione in container',
+      },
+    ],
+  },
+  'granite-blocks': {
+    name: {
+      en: 'Granite Blocks',
+      es: 'Bloques de Granito',
+      it: 'Blocchi di Granito',
+    },
+    origin: {
+      en: 'Espírito Santo / Minas Gerais, Brazil',
+      es: 'Espírito Santo / Minas Gerais, Brasil',
+      it: 'Espírito Santo / Minas Gerais, Brasile',
+    },
+    colorLabel: {
+      en: 'Granular Grey & Earth Tones',
+      es: 'Gris Granulado y Tonos Terrosos',
+      it: 'Grigio Granulare & Toni Terra',
+    },
+    description: {
+      en: 'Large blocks quarried directly from open-pit deposits, rough-cut and intended for gangsaw processing mills and high-capacity stone processors.',
+      es: 'Grandes bloques extraídos de canteras, con cortes brutos, destinados a aserraderos e industrias de procesamiento a gran escala.',
+      it: 'Grandi blocchi estratti direttamente da cave a cielo aperto, a taglio grezzo, destinati a segherie e industrie di lavorazione ad alta capacità.',
+    },
+    recommendedUses: [
+      {
+        en: 'Multi-wire industrial cutting and gangsaw processing',
+        es: 'Corte industrial con multifilo y telar diamantado',
+        it: 'Segagione industriale con multifilo e telaio diamantato',
+      },
+      {
+        en: 'Major infrastructure and commercial developments',
+        es: 'Grandes proyectos comerciales y de infraestructura',
+        it: 'Grandi opere commerciali e infrastrutture',
+      },
+      {
+        en: 'Heavy-traffic industrial, airport and urban flooring',
+        es: 'Pavimentos de alto tráfico urbano, aeroportuario e industrial',
+        it: 'Pavimentazioni industriali, aeroportuali e urbane ad alto traffico',
+      },
+      {
+        en: 'Ventilated façades and monumental architectural cladding',
+        es: 'Fachadas ventiladas y revestimientos arquitectónicos monumentales',
+        it: 'Facciate ventilate e rivestimenti monumentali',
+      },
+    ],
+    features: [
+      {
+        en: 'Direct quarry blocks with clean commercial squaring',
+        es: 'Bloques directos de cantera con escuadrado comercial limpio',
+        it: 'Blocchi diretti da cava con squadratura commerciale netta',
+      },
+      {
+        en: 'Continuous large-scale supply capacity for export',
+        es: 'Capacidad de suministro continuo a gran escala para exportación',
+        it: 'Fornitura continua su larga scala per export via porto',
+      },
+      {
+        en: 'High mineral hardness (Mohs 6.5) and unmatched structural strength',
+        es: 'Alta dureza mineral (Mohs 6.5) y resistencia estructural insuperable',
+        it: 'Elevata durezza minerale (Mohs 6.5) e resistenza strutturale superiore',
+      },
+    ],
+  },
 };
 
 /** Translate a single shared term (finish, category label…). */
@@ -242,8 +488,9 @@ export const localizeStone = (stone: StoneItem, lang: Language): StoneItem => {
   const l = STONE_L10N[stone.id];
   return {
     ...stone,
+    name: l?.name ? l.name[lang] : stone.name,
     categoryLabel: translateTerm(stone.categoryLabel, lang),
-    finishes: stone.finishes.map((f) => translateTerm(f, lang)),
+    finishes: stone.finishes.map((f) => translateTerm(f, lang)) as any,
     ...(l
       ? {
           origin: l.origin[lang],

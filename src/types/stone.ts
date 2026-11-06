@@ -1,6 +1,6 @@
 export type StoneCategory = 'quartzite' | 'marble' | 'granite';
 
-export type StoneFinish = 'Polido' | 'Escovado' | 'Levigado' | 'Acetinado' | 'Flamado';
+export type StoneFinish = 'Polido' | 'Escovado' | 'Levigado' | 'Acetinado' | 'Flamado' | 'Bruto';
 
 export interface StoneItem {
   id: string;

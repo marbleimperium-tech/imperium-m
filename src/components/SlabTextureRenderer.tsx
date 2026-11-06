@@ -8,7 +8,7 @@ interface SlabTextureRendererProps {
   isBookmatched?: boolean;
   isBacklit?: boolean;
   showSlabDimensions?: boolean;
-  aspectRatio?: 'slab' | 'square' | 'wide';
+  aspectRatio?: 'slab' | 'square' | 'wide' | 'video';
   slabIndex?: number;
 }
 
@@ -28,7 +28,7 @@ export const SlabTextureRenderer: React.FC<SlabTextureRendererProps> = ({
   const aspectClass =
     aspectRatio === 'square'
       ? 'aspect-square'
-      : aspectRatio === 'wide'
+      : aspectRatio === 'wide' || aspectRatio === 'video'
       ? 'aspect-video'
       : 'aspect-[1.58/1]';
 

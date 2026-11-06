@@ -390,6 +390,162 @@ export const STONES_DATABASE: StoneItem[] = [
     ],
     realPhotoUrl: '/images/blue-roma-chapa.png',
     architecturalPhotoUrl: '/images/blue-roma-chapa.png',
+  },
+  {
+    id: 'quartzite-blocks',
+    name: 'Quartzite Blocks - Blocos de Quartzito',
+    category: 'quartzite',
+    categoryLabel: 'Quartzito Exótico',
+    origin: 'Espírito Santo / Bahia, Brasil',
+    colorFamily: 'green',
+    colorLabel: 'Verde Esmeralda & Cinza Cristalino',
+    description: 'Rochas naturais valorizadas pelos desenhos, veios e variedade de cores. Podem ser comercializadas em blocos brutos ou chapas beneficiadas.',
+    finishes: ['Bruto', 'Polido', 'Levigado', 'Escovado'],
+    thicknesses: ['Bloco Bruto', '2 cm', '3 cm'],
+    specs: {
+      waterAbsorption: '0.08%',
+      bulkDensity: '2.660 kg/m³',
+      flexuralStrength: '20.5 MPa',
+      mohsHardness: 7,
+      translucency: true,
+    },
+    recommendedUses: [
+      'Desdobramento e serragem de blocos em chapas',
+      'Projetos arquitetônicos e comerciais de grande porte',
+      'Bancadas nobres e ilhas gourmet',
+      'Fachadas e revestimentos monumentais'
+    ],
+    texturePattern: {
+      baseColor: '#3a554a',
+      secondaryColor: '#5c7367',
+      veinColor: '#b8c7ba',
+      veinColor2: '#243830',
+      patternType: 'dramatic',
+    },
+    features: [
+      'Fornecimento direto de jazida em blocos brutos ou chapas',
+      'Desenhos e veios orgânicos de rara expressividade',
+      'Altíssima dureza natural (Mohs 7) e durabilidade superior'
+    ],
+    realPhotoUrl: '/images/quartzite-blocks.jpg',
+    architecturalPhotoUrl: '/images/quartzite-blocks.jpg',
+  },
+  {
+    id: 'natural-stone-slabs',
+    name: 'Natural Stone Slabs - Chapas de Rochas Naturais',
+    category: 'granite',
+    categoryLabel: 'Granito Exótico',
+    origin: 'Espírito Santo, Brasil',
+    colorFamily: 'black',
+    colorLabel: 'Preto Cósmico & Veio Branco',
+    description: 'Materiais cortados e beneficiados com precisão dimensional, com opções de acabamento polido, levigado e outros, conforme disponibilidade para pronta entrega.',
+    finishes: ['Polido', 'Levigado', 'Escovado', 'Acetinado'],
+    thicknesses: ['2 cm', '3 cm'],
+    specs: {
+      waterAbsorption: '0.12%',
+      bulkDensity: '2.720 kg/m³',
+      flexuralStrength: '18.9 MPa',
+      mohsHardness: 6.5,
+      translucency: false,
+    },
+    recommendedUses: [
+      'Bancadas de cozinha e ilhas gourmet de alto padrão',
+      'Painéis verticais e revestimentos decorativos',
+      'Pisos nobres contínuos comerciais e residenciais',
+      'Lareiras e escadarias monumentais'
+    ],
+    texturePattern: {
+      baseColor: '#16161a',
+      secondaryColor: '#242429',
+      veinColor: '#e8e4dc',
+      veinColor2: '#8a8985',
+      patternType: 'dramatic',
+    },
+    features: [
+      'Chapas calibradas e teladas de alta planicidade industrial',
+      'Opções de acabamento nobre: polido, levigado, escovado e acetinado',
+      'Composições bookmatched espelhadas para projetos autorais'
+    ],
+    realPhotoUrl: '/images/natural-stone-slabs.jpg',
+    architecturalPhotoUrl: '/images/natural-stone-slabs.jpg',
+  },
+  {
+    id: 'marble-blocks',
+    name: 'Marble Blocks - Blocos de Mármore',
+    category: 'marble',
+    categoryLabel: 'Mármore Nobre',
+    origin: 'Espírito Santo / Paraná, Brasil & Importação',
+    colorFamily: 'white',
+    colorLabel: 'Branco Alvo & Cinza Suave',
+    description: 'Blocos extraídos em grandes dimensões, com padrões naturais, veios e tonalidades características de cada jazida. Ideais para desdobramento em teares e beneficiamento de chapas nobres.',
+    finishes: ['Bruto', 'Polido', 'Levigado', 'Acetinado'],
+    thicknesses: ['Bloco Bruto', '2 cm', '3 cm'],
+    specs: {
+      waterAbsorption: '0.14%',
+      bulkDensity: '2.710 kg/m³',
+      flexuralStrength: '16.2 MPa',
+      mohsHardness: 4,
+      translucency: false,
+    },
+    recommendedUses: [
+      'Desdobramento e serragem em teares diamantados',
+      'Projetos arquitetônicos e residenciais de alto padrão',
+      'Salas de banho, tampos e lavabos esculturais',
+      'Revestimentos nobres e paginações espelhadas (bookmatched)'
+    ],
+    texturePattern: {
+      baseColor: '#f5f5f3',
+      secondaryColor: '#e5e5e0',
+      veinColor: '#b8b7b2',
+      veinColor2: '#dedcd7',
+      patternType: 'linear',
+    },
+    features: [
+      'Blocos de primeira escolha cúbicos e de grandes dimensões',
+      'Tonalidade branca pura com veios sutis de alta nobreza',
+      'Pronta disponibilidade para exportação em contêiner ou pátio'
+    ],
+    realPhotoUrl: '/images/marble-blocks.jpg',
+    architecturalPhotoUrl: '/images/marble-blocks.jpg',
+  },
+  {
+    id: 'granite-blocks',
+    name: 'Granite Blocks - Blocos de Granito',
+    category: 'granite',
+    categoryLabel: 'Granito Superior',
+    origin: 'Espírito Santo / Minas Gerais, Brasil',
+    colorFamily: 'grey',
+    colorLabel: 'Cinza Granulado & Tons Naturais',
+    description: 'Grandes blocos extraídos das pedreiras, com cortes brutos, destinados a serrarias e indústrias de beneficiamento.',
+    finishes: ['Bruto', 'Polido', 'Levigado', 'Flamado', 'Escovado'],
+    thicknesses: ['Bloco Bruto', '2 cm', '3 cm'],
+    specs: {
+      waterAbsorption: '0.11%',
+      bulkDensity: '2.780 kg/m³',
+      flexuralStrength: '22.4 MPa',
+      mohsHardness: 6.5,
+      translucency: false,
+    },
+    recommendedUses: [
+      'Desdobramento industrial em multifio e teares diamantados',
+      'Grandes obras de infraestrutura e comerciais',
+      'Pisos e pavimentações de altíssimo tráfego',
+      'Fachadas ventiladas e projetos urbanísticos'
+    ],
+    texturePattern: {
+      baseColor: '#787672',
+      secondaryColor: '#5c5a57',
+      veinColor: '#3a3937',
+      veinColor2: '#b8b5af',
+      patternType: 'crystalline',
+    },
+    features: [
+      'Blocos brutos de corte limpo e esquadrejamento comercial',
+      'Fornecimento contínuo de pedreira em grande escala',
+      'Dureza elevada (Mohs 6.5) e resistência mecânica insuperável'
+    ],
+    realPhotoUrl: '/images/granite-blocks.jpg',
+    architecturalPhotoUrl: '/images/granite-blocks.jpg',
   }
 ];
 
