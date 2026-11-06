@@ -44,6 +44,8 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
         return `¡Hola, equipo de Império Marble! Quisiera información comercial y disponibilidad de lote para la roca: ${stone.name} (${stone.categoryLabel}). Lugar de entrega / Puerto:`;
       case 'it':
         return `Salve, team Império Marble! Vorrei informazioni commerciali e disponibilità di lotto per la pietra: ${stone.name} (${stone.categoryLabel}). Luogo di consegna / Porto:`;
+      case 'de':
+        return `Hallo, Team Império Marble! Ich möchte Handelsinformationen und Chargenverfügbarkeit für den Naturstein: ${stone.name} (${stone.categoryLabel}). Lieferort / Zielhafen:`;
       default:
         return `Olá, equipe Império Marble! Gostaria de informações comerciais e disponibilidade de lote para a rocha: ${stone.name} (${stone.categoryLabel}). Local de entrega / Porto:`;
     }
@@ -75,7 +77,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
           <button
             onClick={onClose}
             className="p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-800 transition-colors cursor-pointer"
-            aria-label={tr({ pt: 'Fechar', en: 'Close', es: 'Cerrar', it: 'Chiudi' })}
+            aria-label={tr({ pt: 'Fechar', en: 'Close', es: 'Cerrar', it: 'Chiudi', de: 'Schließen' })}
           >
             <X className="w-6 h-6" />
           </button>
@@ -97,7 +99,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                 }`}
               >
                 <Camera className="w-3.5 h-3.5" />
-                <span>{tr({ pt: 'Foto Real da Chapa', en: 'Real Slab Photo', es: 'Foto Real de la Placa', it: 'Foto Reale della Lastra' })}</span>
+                <span>{tr({ pt: 'Foto Real da Chapa', en: 'Real Slab Photo', es: 'Foto Real de la Placa', it: 'Foto Reale della Lastra', de: 'Echtes Plattenfoto' })}</span>
               </button>
 
               <button
@@ -110,7 +112,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                 }`}
               >
                 <Home className="w-3.5 h-3.5" />
-                <span>{tr({ pt: 'Aplicação Real em Obra', en: 'Real Project Application', es: 'Aplicación Real en Obra', it: 'Applicazione Reale in Opera' })}</span>
+                <span>{tr({ pt: 'Aplicação Real em Obra', en: 'Real Project Application', es: 'Aplicación Real en Obra', it: 'Applicazione Reale in Opera', de: 'Reale Projektanwendung' })}</span>
               </button>
 
               <button
@@ -153,7 +155,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent pointer-events-none" />
                     <div className="absolute bottom-3 left-3 px-3 py-1 bg-stone-950/85 backdrop-blur-md rounded border border-stone-800 text-xs text-amber-300 font-mono">
-                      {tr({ pt: 'Foto Real da Chapa · Lote Padrão Exportação', en: 'Real Slab Photo · Export Grade Lot', es: 'Foto Real de la Placa · Lote Estándar Exportación', it: 'Foto Reale della Lastra · Lotto Standard Export' })}
+                      {tr({ pt: 'Foto Real da Chapa · Lote Padrão Exportação', en: 'Real Slab Photo · Export Grade Lot', es: 'Foto Real de la Placa · Lote Estándar Exportación', it: 'Foto Reale della Lastra · Lotto Standard Export', de: 'Echtes Plattenfoto · Exportqualität-Charge' })}
                     </div>
                   </div>
                 ) : (
@@ -178,7 +180,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent pointer-events-none" />
                   <div className="absolute bottom-3 left-3 px-3 py-1 bg-stone-950/85 backdrop-blur-md rounded border border-stone-800 text-xs text-amber-300 font-medium">
-                    {tr({ pt: 'Aplicação Real em Obra de Alto Luxo', en: 'Real Application in High-End Luxury Project', es: 'Aplicación Real en Obra de Alto Lujo', it: 'Applicazione Reale in Progetto di Alto Lusso' })}
+                    {tr({ pt: 'Aplicação Real em Obra de Alto Luxo', en: 'Real Application in High-End Luxury Project', es: 'Aplicación Real en Obra de Alto Lujo', it: 'Applicazione Reale in Progetto di Alto Lusso', de: 'Reale Anwendung im Luxusprojekt' })}
                   </div>
                 </div>
               )}
@@ -207,7 +209,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                   }}
                 >
                   <div className="absolute inset-0 flex items-center justify-center text-[10px] text-amber-200/80 font-mono bg-black/30">
-                    2.5x {tr({ pt: 'Veios', en: 'Veins', es: 'Vetas', it: 'Venature' })}
+                    2.5x {tr({ pt: 'Veios', en: 'Veins', es: 'Vetas', it: 'Venature', de: 'Adern' })}
                   </div>
                 </div>
               )}
@@ -221,7 +223,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
             {/* Interactive View Controls (Active when vector-interactive mode) */}
             {modalView === 'vector-interactive' && (
               <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-stone-950/60 rounded-xl border border-stone-800">
-                <span className="text-xs text-stone-400 font-medium">{tr({ pt: 'Modos de Chapa:', en: 'Slab Modes:', es: 'Modos de Placa:', it: 'Modalità Lastra:' })}</span>
+                <span className="text-xs text-stone-400 font-medium">{tr({ pt: 'Modos de Chapa:', en: 'Slab Modes:', es: 'Modos de Placa:', it: 'Modalità Lastra:', de: 'Plattenansicht:' })}</span>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
@@ -332,7 +334,7 @@ export const SlabDetailModal: React.FC<SlabDetailModalProps> = ({
                   </div>
                   <div className="py-2 flex justify-between">
                     <span className="text-stone-400 font-sans">{t.modal.standardThickness}</span>
-                    <span className="text-stone-200">{stone.thicknesses.join(tr({ pt: ' e ', en: ' and ', es: ' y ', it: ' e ' }))}</span>
+                    <span className="text-stone-200">{stone.thicknesses.join(tr({ pt: ' e ', en: ' and ', es: ' y ', it: ' e ', de: ' und ' }))}</span>
                   </div>
                 </div>
               </div>

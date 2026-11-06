@@ -135,6 +135,7 @@ function AppContent() {
           en: 'Sales WhatsApp',
           es: 'WhatsApp Comercial',
           it: 'WhatsApp Commerciale',
+          de: 'WhatsApp Vertrieb',
         })}
       >
         <MessageSquare className="w-5 h-5 sm:w-4 sm:h-4" />
@@ -144,6 +145,7 @@ function AppContent() {
             en: 'Sales WhatsApp',
             es: 'WhatsApp Comercial',
             it: 'WhatsApp Commerciale',
+            de: 'WhatsApp Vertrieb',
           })}
         </span>
       </a>

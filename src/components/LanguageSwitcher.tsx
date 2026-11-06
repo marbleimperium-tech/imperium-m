@@ -14,6 +14,7 @@ const LANGUAGES: LanguageOption[] = [
   { code: 'en', label: 'English', flag: '🇺🇸' },
   { code: 'es', label: 'Español', flag: '🇪🇸' },
   { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+  { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
 ];
 
 export const LanguageSwitcher: React.FC<{ isMobile?: boolean }> = ({ isMobile = false }) => {

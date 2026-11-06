@@ -20,31 +20,33 @@ interface SlideItem {
 const SLIDES: SlideItem[] = [
   {
     id: 'slide-1',
-    tag: { pt: 'PISCINAS & SPAS MONUMENTAIS EM MÁRMORE', en: 'MONUMENTAL MARBLE POOLS & SPAS', es: 'PISCINAS Y SPAS MONUMENTALES EN MÁRMOL', it: 'PISCINE & SPA MONUMENTALI IN MARMO' },
-    title: { pt: 'A beleza eterna esculpida pela natureza,', en: 'Eternal beauty sculpted by nature,', es: 'La belleza eterna esculpida por la naturaleza,', it: 'La bellezza eterna scolpita dalla natura,' },
-    highlight: { pt: 'perfeita para o mundo.', en: 'perfect for the world.', es: 'perfecta para el mundo.', it: 'perfetta per il mondo.' },
+    tag: { pt: 'PISCINAS & SPAS MONUMENTAIS EM MÁRMORE', en: 'MONUMENTAL MARBLE POOLS & SPAS', es: 'PISCINAS Y SPAS MONUMENTALES EN MÁRMOL', it: 'PISCINE & SPA MONUMENTALI IN MARMO', de: 'MONUMENTALE MARMORBECKEN & SPAS' },
+    title: { pt: 'A beleza eterna esculpida pela natureza,', en: 'Eternal beauty sculpted by nature,', es: 'La belleza eterna esculpida por la naturaleza,', it: 'La bellezza eterna scolpita dalla natura,', de: 'Ewige Schönheit, gemeißelt von der Natur,' },
+    highlight: { pt: 'perfeita para o mundo.', en: 'perfect for the world.', es: 'perfecta para el mundo.', it: 'perfetta per il mondo.', de: 'perfekt für die Welt.' },
     subtitle: {
       pt: 'Mármores nobres com paginação bookmatched contínua e quartzitos exóticos em grandes formatos para projetos de alto luxo e bem-estar.',
       en: 'Noble marbles with continuous bookmatched layouts and exotic large-format quartzites for high-luxury and wellness projects.',
       es: 'Mármoles nobles con paginación bookmatched continua y cuarcitas exóticas en grandes formatos para proyectos de alto lujo y bienestar.',
       it: 'Marmi pregiati con impaginazione bookmatch continua e quarziti esotiche in grandi formati per progetti di alto lusso e benessere.',
+      de: 'Edle Marmore mit kontinuierlichem Bookmatch-Layout und exotische Quarzite in Großformaten für Luxus- und Wellnessprojekte.',
     },
     imageUrl: '/images/hero-1.jpg',
-    badgeText: { pt: 'Padrão Exportação Classe A', en: 'Class A Export Standard', es: 'Estándar de Exportación Clase A', it: 'Standard Export Classe A' },
+    badgeText: { pt: 'Padrão Exportação Classe A', en: 'Class A Export Standard', es: 'Estándar de Exportación Clase A', it: 'Standard Export Classe A', de: 'Exportstandard Klasse A' },
   },
   {
     id: 'slide-2',
-    tag: { pt: 'ARQUITETURA MONOLÍTICA & HUB GUARAPARI', en: 'MONOLITHIC ARCHITECTURE & GUARAPARI HUB', es: 'ARQUITECTURA MONOLÍTICA Y HUB GUARAPARI', it: 'ARCHITETTURA MONOLITICA & HUB GUARAPARI' },
-    title: { pt: 'Do maior polo minerador da América Latina', en: "From Latin America's largest mining hub", es: 'Desde el mayor polo minero de América Latina', it: "Dal più grande polo estrattivo dell'America Latina" },
-    highlight: { pt: 'direto para obras pelo mundo.', en: 'straight to projects worldwide.', es: 'directo a obras en todo el mundo.', it: 'direttamente ai cantieri di tutto il mondo.' },
+    tag: { pt: 'ARQUITETURA MONOLÍTICA & HUB GUARAPARI', en: 'MONOLITHIC ARCHITECTURE & GUARAPARI HUB', es: 'ARQUITECTURA MONOLÍTICA Y HUB GUARAPARI', it: 'ARCHITETTURA MONOLITICA & HUB GUARAPARI', de: 'MONOLITHISCHE ARCHITEKTUR & HUB GUARAPARI' },
+    title: { pt: 'Do maior polo minerador da América Latina', en: "From Latin America's largest mining hub", es: 'Desde el mayor polo minero de América Latina', it: "Dal più grande polo estrattivo dell'America Latina", de: 'Aus dem größten Bergbauzentrum Lateinamerikas' },
+    highlight: { pt: 'direto para obras pelo mundo.', en: 'straight to projects worldwide.', es: 'directo a obras en todo el mundo.', it: 'direttamente ai cantieri di tutto il mondo.', de: 'direkt zu Projekten weltweit.' },
     subtitle: {
       pt: 'Tecnologia de corte em fio diamantado, calibragem milimétrica de espessura e logística ágil integrada aos portos de Vitória e Tubarão.',
       en: 'Diamond wire cutting technology, millimetric thickness calibration and agile logistics integrated with the ports of Vitória and Tubarão.',
       es: 'Tecnología de corte con hilo diamantado, calibrado milimétrico de espesor y logística ágil integrada a los puertos de Vitória y Tubarão.',
       it: 'Tecnologia di taglio a filo diamantato, calibratura millimetrica dello spessore e logistica agile integrata ai porti di Vitória e Tubarão.',
+      de: 'Diamantdrahtsägetechnik, millimetergenaue Dickenkalibrierung und agile Logistik über die Häfen Vitória und Tubarão.',
     },
     imageUrl: '/images/hero-2.jpg',
-    badgeText: { pt: 'Engenharia & Volumetria', en: 'Engineering & Volume', es: 'Ingeniería y Volumetría', it: 'Ingegneria & Volumetria' },
+    badgeText: { pt: 'Engenharia & Volumetria', en: 'Engineering & Volume', es: 'Ingeniería y Volumetría', it: 'Ingegneria & Volumetria', de: 'Technik & Volumen' },
   },
 ];
 
@@ -147,16 +149,16 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenCatalog, onOpenQuo
                 40+
               </div>
               <div className="text-[11px] text-stone-400 mt-0.5">
-                {tr({ pt: 'Rochas nobres em estoque', en: 'Premium stones in stock', es: 'Rocas nobles en stock', it: 'Pietre pregiate in magazzino' })}
+                {tr({ pt: 'Rochas nobres em estoque', en: 'Premium stones in stock', es: 'Rocas nobles en stock', it: 'Pietre pregiate in magazzino', de: 'Edle Steine auf Lager' })}
               </div>
             </div>
 
             <div>
               <div className="text-xl sm:text-2xl font-serif font-bold text-stone-100 tabular-nums">
-                {tr({ pt: 'Classe A', en: 'Class A', es: 'Clase A', it: 'Classe A' })}
+                {tr({ pt: 'Classe A', en: 'Class A', es: 'Clase A', it: 'Classe A', de: 'Klasse A' })}
               </div>
               <div className="text-[11px] text-stone-400 mt-0.5">
-                {tr({ pt: 'Corte multifio diamantado', en: 'Diamond multi-wire cutting', es: 'Corte multihilo diamantado', it: 'Taglio multifilo diamantato' })}
+                {tr({ pt: 'Corte multifio diamantado', en: 'Diamond multi-wire cutting', es: 'Corte multihilo diamantado', it: 'Taglio multifilo diamantato', de: 'Diamant-Multidrahtschnitt' })}
               </div>
             </div>
 
@@ -165,16 +167,16 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenCatalog, onOpenQuo
                 Guarapari
               </div>
               <div className="text-[11px] text-stone-400 mt-0.5">
-                {tr({ pt: 'Polo extrativo mundial', en: 'Global extraction hub', es: 'Polo extractivo mundial', it: 'Polo estrattivo mondiale' })}
+                {tr({ pt: 'Polo extrativo mundial', en: 'Global extraction hub', es: 'Polo extractivo mundial', it: 'Polo estrattivo mondiale', de: 'Weltweiter Abbaustandort' })}
               </div>
             </div>
 
             <div>
               <div className="text-xl sm:text-2xl font-serif font-bold text-amber-400 tabular-nums">
-                25+ {tr({ pt: 'Países', en: 'Countries', es: 'Países', it: 'Paesi' })}
+                25+ {tr({ pt: 'Países', en: 'Countries', es: 'Países', it: 'Paesi', de: 'Länder' })}
               </div>
               <div className="text-[11px] text-stone-400 mt-0.5">
-                {tr({ pt: 'Exportação consolidada', en: 'Established exports', es: 'Exportación consolidada', it: 'Export consolidato' })}
+                {tr({ pt: 'Exportação consolidada', en: 'Established exports', es: 'Exportación consolidada', it: 'Export consolidato', de: 'Etablierter Export' })}
               </div>
             </div>
           </div>
@@ -194,7 +196,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenCatalog, onOpenQuo
         <button
           onClick={prevSlide}
           className="p-2 sm:p-2.5 rounded-lg bg-stone-950/80 hover:bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-colors cursor-pointer"
-          aria-label={tr({ pt: 'Slide anterior', en: 'Previous slide', es: 'Diapositiva anterior', it: 'Slide precedente' })}
+          aria-label={tr({ pt: 'Slide anterior', en: 'Previous slide', es: 'Diapositiva anterior', it: 'Slide precedente', de: 'Vorherige Folie' })}
         >
           <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
@@ -202,7 +204,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({ onOpenCatalog, onOpenQuo
         <button
           onClick={nextSlide}
           className="p-2 sm:p-2.5 rounded-lg bg-stone-950/80 hover:bg-stone-900 border border-stone-800 text-stone-300 hover:text-white transition-colors cursor-pointer"
-          aria-label={tr({ pt: 'Próximo slide', en: 'Next slide', es: 'Siguiente diapositiva', it: 'Slide successiva' })}
+          aria-label={tr({ pt: 'Próximo slide', en: 'Next slide', es: 'Siguiente diapositiva', it: 'Slide successiva', de: 'Nächste Folie' })}
         >
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>

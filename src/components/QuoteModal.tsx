@@ -48,19 +48,19 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
   const validate = () => {
     const errs: Record<string, string> = {};
     if (!formData.fullName.trim()) {
-      errs.fullName = tr({ pt: 'Nome é obrigatório', en: 'Name is required', es: 'El nombre es obligatorio', it: 'Il nome è obbligatorio' });
+      errs.fullName = tr({ pt: 'Nome é obrigatório', en: 'Name is required', es: 'El nombre es obligatorio', it: 'Il nome è obbligatorio', de: 'Name ist erforderlich' });
     }
     if (!formData.companyName.trim()) {
-      errs.companyName = tr({ pt: 'Nome da empresa é obrigatório', en: 'Company name is required', es: 'El nombre de la empresa es obligatorio', it: "Il nome dell'azienda è obbligatorio" });
+      errs.companyName = tr({ pt: 'Nome da empresa é obrigatório', en: 'Company name is required', es: 'El nombre de la empresa es obligatorio', it: "Il nome dell'azienda è obbligatorio", de: 'Firmenname ist erforderlich' });
     }
     if (!formData.phone.trim()) {
-      errs.phone = tr({ pt: 'Telefone/WhatsApp é obrigatório', en: 'Phone/WhatsApp is required', es: 'Teléfono/WhatsApp es obligatorio', it: 'Telefono/WhatsApp è obbligatorio' });
+      errs.phone = tr({ pt: 'Telefone/WhatsApp é obrigatório', en: 'Phone/WhatsApp is required', es: 'Teléfono/WhatsApp es obligatorio', it: 'Telefono/WhatsApp è obbligatorio', de: 'Telefon/WhatsApp ist erforderlich' });
     }
     if (!formData.email.trim() || !formData.email.includes('@')) {
-      errs.email = tr({ pt: 'E-mail corporativo válido é obrigatório', en: 'Valid company email is required', es: 'E-mail corporativo válido es obligatorio', it: 'È richiesta un’e-mail aziendale valida' });
+      errs.email = tr({ pt: 'E-mail corporativo válido é obrigatório', en: 'Valid company email is required', es: 'E-mail corporativo válido es obligatorio', it: 'È richiesta un’e-mail aziendale valida', de: 'Gültige Firmen-E-Mail ist erforderlich' });
     }
     if (!formData.destinationCity.trim()) {
-      errs.destinationCity = tr({ pt: 'Cidade/Porto de entrega é obrigatório', en: 'Delivery city/port is required', es: 'Ciudad/Puerto de entrega es obligatorio', it: 'Città/Porto di consegna è obbligatorio' });
+      errs.destinationCity = tr({ pt: 'Cidade/Porto de entrega é obrigatório', en: 'Delivery city/port is required', es: 'Ciudad/Puerto de entrega es obligatorio', it: 'Città/Porto di consegna è obbligatorio', de: 'Lieferstadt/-hafen ist erforderlich' });
     }
     setErrors(errs);
     return Object.keys(errs).length === 0;
@@ -150,7 +150,7 @@ export const QuoteModal: React.FC<QuoteModalProps> = ({
           <button
             onClick={onClose}
             className="p-2 text-stone-400 hover:text-white rounded-lg hover:bg-stone-800 transition-colors cursor-pointer"
-            aria-label={tr({ pt: 'Fechar', en: 'Close', es: 'Cerrar', it: 'Chiudi' })}
+            aria-label={tr({ pt: 'Fechar', en: 'Close', es: 'Cerrar', it: 'Chiudi', de: 'Schließen' })}
           >
             <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>

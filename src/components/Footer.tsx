@@ -1,10 +1,19 @@
 import React from 'react';
 import { COMPANY_INFO } from '../data/stones';
 import { useI18n } from '../context/I18nContext';
-import { ShieldCheck, MapPin, Phone, Mail } from 'lucide-react';
+import { Language } from '../i18n/translations';
+import { ShieldCheck, MapPin, Phone, Mail, Globe } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { tr } = useI18n();
+  const { language, setLanguage, tr } = useI18n();
+
+  const languages: { code: Language; label: string; flag: string }[] = [
+    { code: 'pt', label: 'Português', flag: '🇧🇷' },
+    { code: 'en', label: 'English', flag: '🇺🇸' },
+    { code: 'es', label: 'Español', flag: '🇪🇸' },
+    { code: 'it', label: 'Italiano', flag: '🇮🇹' },
+    { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+  ];
 
   const links = [
     { href: '#catalogo', label: tr({ pt: 'Catálogo de Chapas', en: 'Slab Catalog', es: 'Catálogo de Placas', it: 'Catalogo Lastre' }) },
@@ -108,8 +117,35 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Language Selection Row */}
+        <div className="mt-12 pt-6 border-t border-stone-850 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-stone-400">
+            <Globe className="w-4 h-4 text-amber-500" />
+            <span className="text-xs font-medium">
+              {tr({ pt: 'Idioma da Interface:', en: 'Interface Language:', es: 'Idioma de la Interfaz:', it: "Lingua dell'Interfaccia:" })}
+            </span>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            {languages.map((item) => (
+              <button
+                key={item.code}
+                type="button"
+                onClick={() => setLanguage(item.code)}
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  language === item.code
+                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/50 shadow-sm'
+                    : 'bg-stone-900/80 text-stone-400 hover:text-white hover:bg-stone-800 border border-stone-800'
+                }`}
+              >
+                <span>{item.flag}</span>
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500">
+        <div className="mt-6 pt-6 border-t border-stone-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500">
           <div>
             © {new Date().getFullYear()} Império Marble Importação e Exportação Ltda.{' '}
             {tr({ pt: 'Todos os direitos reservados.', en: 'All rights reserved.', es: 'Todos los derechos reservados.', it: 'Tutti i diritti riservati.' })}

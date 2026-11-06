@@ -20,7 +20,7 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined);
 export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem('imperio_lang');
-    if (saved && (saved === 'pt' || saved === 'en' || saved === 'es' || saved === 'it')) {
+    if (saved && (saved === 'pt' || saved === 'en' || saved === 'es' || saved === 'it' || saved === 'de')) {
       return saved;
     }
     return 'pt';
@@ -32,7 +32,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   useEffect(() => {
-    const htmlLang: Record<Language, string> = { pt: 'pt-BR', en: 'en', es: 'es', it: 'it' };
+    const htmlLang: Record<Language, string> = { pt: 'pt-BR', en: 'en', es: 'es', it: 'it', de: 'de' };
     document.documentElement.lang = htmlLang[language];
   }, [language]);
 

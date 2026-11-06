@@ -17,38 +17,38 @@ interface NavLink {
 const NAV_LINKS: NavLink[] = [
   {
     href: '#catalogo',
-    short: { pt: 'Catálogo', en: 'Catalog', es: 'Catálogo', it: 'Catalogo' },
-    long: { pt: 'Catálogo de Chapas', en: 'Slab Catalog', es: 'Catálogo de Placas', it: 'Catalogo Lastre' },
+    short: { pt: 'Catálogo', en: 'Catalog', es: 'Catálogo', it: 'Catalogo', de: 'Katalog' },
+    long: { pt: 'Catálogo de Chapas', en: 'Slab Catalog', es: 'Catálogo de Placas', it: 'Catalogo Lastre', de: 'Plattenkatalog' },
   },
   {
     href: '#projetos',
-    short: { pt: 'Inspiração & Obras', en: 'Inspiration & Projects', es: 'Inspiración y Obras', it: 'Ispirazione & Opere' },
-    long: { pt: 'Inspiração & Projetos de Referência', en: 'Inspiration & Reference Projects', es: 'Inspiración y Proyectos de Referencia', it: 'Ispirazione & Progetti di Riferimento' },
+    short: { pt: 'Inspiração & Obras', en: 'Inspiration & Projects', es: 'Inspiración y Obras', it: 'Ispirazione & Opere', de: 'Inspiration & Projekte' },
+    long: { pt: 'Inspiração & Projetos de Referência', en: 'Inspiration & Reference Projects', es: 'Inspiración y Proyectos de Referencia', it: 'Ispirazione & Progetti di Riferimento', de: 'Inspiration & Referenzprojekte' },
   },
   {
     href: '#bookmatch-studio',
-    short: { pt: 'Bookmatch Studio', en: 'Bookmatch Studio', es: 'Bookmatch Studio', it: 'Bookmatch Studio' },
-    long: { pt: 'Bookmatch Studio & Paginação', en: 'Bookmatch Studio & Layout', es: 'Bookmatch Studio y Paginación', it: 'Bookmatch Studio & Impaginazione' },
+    short: { pt: 'Bookmatch Studio', en: 'Bookmatch Studio', es: 'Bookmatch Studio', it: 'Bookmatch Studio', de: 'Bookmatch Studio' },
+    long: { pt: 'Bookmatch Studio & Paginação', en: 'Bookmatch Studio & Layout', es: 'Bookmatch Studio y Paginación', it: 'Bookmatch Studio & Impaginazione', de: 'Bookmatch Studio & Layout' },
   },
   {
     href: '#sustentabilidade',
-    short: { pt: 'Jazidas & ESG', en: 'Quarries & ESG', es: 'Canteras y ESG', it: 'Cave & ESG' },
-    long: { pt: 'Jazidas Próprias & Compromisso ESG', en: 'Own Quarries & ESG Commitment', es: 'Canteras Propias y Compromiso ESG', it: 'Cave Proprie & Impegno ESG' },
+    short: { pt: 'Jazidas & ESG', en: 'Quarries & ESG', es: 'Canteras y ESG', it: 'Cave & ESG', de: 'Steinbrüche & ESG' },
+    long: { pt: 'Jazidas Próprias & Compromisso ESG', en: 'Own Quarries & ESG Commitment', es: 'Canteras Propias y Compromiso ESG', it: 'Cave Proprie & Impegno ESG', de: 'Eigene Steinbrüche & ESG-Engagement' },
   },
   {
     href: '#calculadora-b2b',
-    short: { pt: 'Calculadora B2B', en: 'B2B Calculator', es: 'Calculadora B2B', it: 'Calcolatore B2B' },
-    long: { pt: 'Calculadora de Contêiner & Carga B2B', en: 'Container & B2B Load Calculator', es: 'Calculadora de Contenedor y Carga B2B', it: 'Calcolatore Container & Carico B2B' },
+    short: { pt: 'Calculadora B2B', en: 'B2B Calculator', es: 'Calculadora B2B', it: 'Calcolatore B2B', de: 'B2B-Rechner' },
+    long: { pt: 'Calculadora de Contêiner & Carga B2B', en: 'Container & B2B Load Calculator', es: 'Calculadora de Contenedor y Carga B2B', it: 'Calcolatore Container & Carico B2B', de: 'Container- & B2B-Ladungsrechner' },
   },
   {
     href: '#exportacao',
-    short: { pt: 'Comex', en: 'Export', es: 'Comex', it: 'Export' },
-    long: { pt: 'Logística Portuária & Exportação', en: 'Port Logistics & Export', es: 'Logística Portuaria y Exportación', it: 'Logistica Portuale & Export' },
+    short: { pt: 'Comex', en: 'Export', es: 'Comex', it: 'Export', de: 'Export' },
+    long: { pt: 'Logística Portuária & Exportação', en: 'Port Logistics & Export', es: 'Logística Portuaria y Exportación', it: 'Logistica Portuale & Export', de: 'Hafenlogistik & Export' },
   },
   {
     href: '#contato',
-    short: { pt: 'Contato', en: 'Contact', es: 'Contacto', it: 'Contatti' },
-    long: { pt: 'Contato & Localização em Guarapari', en: 'Contact & Location in Guarapari', es: 'Contacto y Ubicación en Guarapari', it: 'Contatti & Sede a Guarapari' },
+    short: { pt: 'Contato', en: 'Contact', es: 'Contacto', it: 'Contatti', de: 'Kontakt' },
+    long: { pt: 'Contato & Localização em Guarapari', en: 'Contact & Location in Guarapari', es: 'Contacto y Ubicación en Guarapari', it: 'Contatti & Sede a Guarapari', de: 'Kontakt & Standort Guarapari' },
   },
 ];
 
@@ -105,15 +105,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
               onClick={onOpenQuote}
               className="px-2.5 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-xs font-bold text-stone-950 bg-amber-500 rounded-lg sm:rounded-xl hover:bg-amber-400 transition-colors whitespace-nowrap cursor-pointer shadow-md shadow-amber-500/10"
             >
-              <span className="hidden xs:inline sm:inline">{tr({ pt: 'Cotação B2B', en: 'B2B Quote', es: 'Cotización B2B', it: 'Preventivo B2B' })}</span>
-              <span className="xs:hidden inline">{tr({ pt: 'Cotar', en: 'Quote', es: 'Cotizar', it: 'Preventivo' })}</span>
+              <span className="hidden xs:inline sm:inline">{tr({ pt: 'Cotação B2B', en: 'B2B Quote', es: 'Cotización B2B', it: 'Preventivo B2B', de: 'B2B-Anfrage' })}</span>
+              <span className="xs:hidden inline">{tr({ pt: 'Cotar', en: 'Quote', es: 'Cotizar', it: 'Preventivo', de: 'Anfragen' })}</span>
             </button>
 
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="xl:hidden p-1.5 sm:p-2 rounded-lg text-stone-400 hover:text-white hover:bg-stone-900 transition-colors cursor-pointer"
-              aria-label={tr({ pt: 'Abrir menu', en: 'Open menu', es: 'Abrir menú', it: 'Apri menu' })}
+              aria-label={tr({ pt: 'Abrir menu', en: 'Open menu', es: 'Abrir menú', it: 'Apri menu', de: 'Menü öffnen' })}
             >
               {mobileMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
             </button>
@@ -145,7 +145,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
               href={`tel:${COMPANY_INFO.contact.phoneClean}`}
               className="block text-center py-2.5 px-4 rounded-xl bg-stone-900 text-stone-200 text-xs font-medium"
             >
-              {tr({ pt: 'Telefone', en: 'Phone', es: 'Teléfono', it: 'Telefono' })}: {COMPANY_INFO.contact.phone}
+              {tr({ pt: 'Telefone', en: 'Phone', es: 'Teléfono', it: 'Telefono', de: 'Telefon' })}: {COMPANY_INFO.contact.phone}
             </a>
             <button
               onClick={() => {

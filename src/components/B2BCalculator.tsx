@@ -42,13 +42,15 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
       summary = `Cálculo de Lote Mayorista: ${Math.round(totalM2)} m² (${totalSlabs} placas) de ${materialType.toUpperCase()} en espesor ${thickness}. Peso estimado: ${totalWeightTons.toFixed(1)} toneladas (${totalBundles} caballetes de madera / ${containersNeeded} contenedor(es) de 20 pies).`;
     } else if (language === 'it') {
       summary = `Calcolo Lotto all'Ingrosso: ${Math.round(totalM2)} m² (${totalSlabs} lastre) di ${materialType.toUpperCase()} con spessore ${thickness}. Peso stimato: ${totalWeightTons.toFixed(1)} tonnellate (${totalBundles} cavalletti in legno / ${containersNeeded} container da 20 piedi).`;
+    } else if (language === 'de') {
+      summary = `Großhandelschargen-Kalkulation: ${Math.round(totalM2)} m² (${totalSlabs} Platten) ${materialType.toUpperCase()} in Stärke ${thickness}. Geschätztes Gewicht: ${totalWeightTons.toFixed(1)} Tonnen (${totalBundles} Holzböcke / ${containersNeeded} 20-Fuß-Container).`;
     } else {
       summary = `Cálculo de Lote Atacadista: ${Math.round(totalM2)} m² (${totalSlabs} chapas) de ${materialType.toUpperCase()} em espessura ${thickness}. Peso estimado: ${totalWeightTons.toFixed(1)} toneladas (${totalBundles} cavalletes de madeira / ${containersNeeded} contêiner(es) de 20ft).`;
     }
     onApplyEstimateToQuote(summary);
   };
 
-  const slabsUnit = tr({ pt: 'chapas', en: 'slabs', es: 'placas', it: 'lastre' });
+  const slabsUnit = tr({ pt: 'chapas', en: 'slabs', es: 'placas', it: 'lastre', de: 'Platten' });
 
   return (
     <section id="calculadora-b2b" className="py-16 sm:py-24 bg-stone-900 border-t border-stone-800 text-stone-100">
@@ -74,13 +76,14 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                 <CheckCircle2 className="w-4 sm:w-5 h-4 sm:h-5 text-amber-500 shrink-0 mt-0.5" />
                 <div className="text-xs text-stone-300">
                   <strong className="text-stone-100">
-                    {tr({ pt: 'Cavaletes de Exportação ISPM 15: ', en: 'ISPM 15 Export Bundles: ', es: 'Caballetes de Exportación ISPM 15: ', it: 'Cavalletti di Esportazione ISPM 15: ' })}
+                    {tr({ pt: 'Cavaletes de Exportação ISPM 15: ', en: 'ISPM 15 Export Bundles: ', es: 'Caballetes de Exportación ISPM 15: ', it: 'Cavalletti di Esportazione ISPM 15: ', de: 'ISPM-15-Exportböcke: ' })}
                   </strong>
                   {tr({
                     pt: 'Madeira tratada termicamente e fumigada conforme padrão internacional.',
                     en: 'Heat-treated, fumigated wood compliant with international standards.',
                     es: 'Madera tratada térmicamente y fumigada según estándares internacionales.',
                     it: 'Legno trattato termicamente e fumigato secondo standard internazionali.',
+                    de: 'Hitzebehandeltes, begastes Holz gemäß internationalen Standards.',
                   })}
                 </div>
               </div>
@@ -89,13 +92,14 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                 <CheckCircle2 className="w-4 sm:w-5 h-4 sm:h-5 text-amber-500 shrink-0 mt-0.5" />
                 <div className="text-xs text-stone-300">
                   <strong className="text-stone-100">
-                    {tr({ pt: 'Aproveitamento Máximo de Carga: ', en: 'Maximum Payload Optimization: ', es: 'Aprovechamiento Máximo de Carga: ', it: 'Ottimizzazione Massima del Carico: ' })}
+                    {tr({ pt: 'Aproveitamento Máximo de Carga: ', en: 'Maximum Payload Optimization: ', es: 'Aprovechamiento Máximo de Carga: ', it: 'Ottimizzazione Massima del Carico: ', de: 'Maximale Nutzlastoptimierung: ' })}
                   </strong>
                   {tr({
                     pt: 'Otimização de peso para não exceder limites de 27 toneladas por contêiner de 20 pés.',
                     en: 'Weight optimization to respect the 27-ton limit per 20ft container.',
                     es: 'Optimización de peso para no exceder los límites de 27 toneladas por contenedor de 20 pies.',
                     it: 'Ottimizzazione del peso per non superare il limite di 27 tonnellate per container da 20 piedi.',
+                    de: 'Gewichtsoptimierung zur Einhaltung des 27-Tonnen-Limits pro 20-Fuß-Container.',
                   })}
                 </div>
               </div>
@@ -104,13 +108,14 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                 <CheckCircle2 className="w-4 sm:w-5 h-4 sm:h-5 text-amber-500 shrink-0 mt-0.5" />
                 <div className="text-xs text-stone-300">
                   <strong className="text-stone-100">
-                    {tr({ pt: 'Fotos de Alta Definição: ', en: 'High-Resolution Photos: ', es: 'Fotos de Alta Definición: ', it: 'Foto ad Alta Risoluzione: ' })}
+                    {tr({ pt: 'Fotos de Alta Definição: ', en: 'High-Resolution Photos: ', es: 'Fotos de Alta Definición: ', it: 'Foto ad Alta Risoluzione: ', de: 'Hochauflösende Fotos: ' })}
                   </strong>
                   {tr({
                     pt: 'Envio prévio de fotos em alta resolução de todas as chapas do lote antes do carregamento.',
                     en: 'Advance high-resolution photos of every slab in the lot before loading.',
                     es: 'Envío previo de fotos en alta resolución de todas las placas del lote antes de la carga.',
                     it: 'Invio preventivo di foto ad alta risoluzione di tutte le lastre del lotto prima del carico.',
+                    de: 'Vorab hochauflösende Fotos aller Platten des Lots vor dem Laden.',
                   })}
                 </div>
               </div>
@@ -120,7 +125,7 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
           {/* Right Column: Calculator Interactive Panel (7 cols) */}
           <div className="lg:col-span-7 bg-stone-950 border border-stone-800 rounded-2xl p-5 sm:p-8 shadow-2xl space-y-6">
             <h3 className="text-base sm:text-lg font-serif font-semibold text-stone-100 flex items-center justify-between pb-3 border-b border-stone-800">
-              <span>{tr({ pt: 'Simulação de Lote & Cubagem', en: 'Lot & Volume Simulation', es: 'Simulación de Lote y Cubicación', it: 'Simulazione Lotto & Cubatura' })}</span>
+              <span>{tr({ pt: 'Simulação de Lote & Cubagem', en: 'Lot & Volume Simulation', es: 'Simulación de Lote y Cubicación', it: 'Simulazione Lotto & Cubatura', de: 'Chargen- & Volumenberechnung' })}</span>
               <span className="text-[11px] sm:text-xs text-amber-500 font-mono">Guarapari/ES Hub</span>
             </h3>
 
@@ -173,8 +178,8 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                 <span>{calcMode === 'area' ? '50 m²' : `10 ${slabsUnit}`}</span>
                 <span>
                   {calcMode === 'area'
-                    ? tr({ pt: '1.200 m² (Lote Exportação)', en: '1,200 m² (Export Lot)', es: '1.200 m² (Lote Exportación)', it: '1.200 m² (Lotto Export)' })
-                    : tr({ pt: '250 chapas (~5 Contêineres)', en: '250 slabs (~5 Containers)', es: '250 placas (~5 Contenedores)', it: '250 lastre (~5 Container)' })}
+                    ? tr({ pt: '1.200 m² (Lote Exportação)', en: '1,200 m² (Export Lot)', es: '1.200 m² (Lote Exportación)', it: '1.200 m² (Lotto Export)', de: '1.200 m² (Exportcharge)' })
+                    : tr({ pt: '250 chapas (~5 Contêineres)', en: '250 slabs (~5 Containers)', es: '250 placas (~5 Contenedores)', it: '250 lastre (~5 Container)', de: '250 Platten (~5 Container)' })}
                 </span>
               </div>
             </div>
@@ -220,9 +225,9 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                   onChange={(e) => setMaterialType(e.target.value as any)}
                   className="w-full py-2 px-3 bg-stone-900 border border-stone-800 rounded-lg text-xs text-stone-200 focus:outline-none focus:border-amber-500"
                 >
-                  <option value="quartzite">{tr({ pt: 'Quartzito Exótico', en: 'Exotic Quartzite', es: 'Cuarcita Exótica', it: 'Quarzite Esotica' })}</option>
-                  <option value="marble">{tr({ pt: 'Mármore Nobre', en: 'Noble Marble', es: 'Mármol Noble', it: 'Marmo Pregiato' })}</option>
-                  <option value="granite">{tr({ pt: 'Granito Superior', en: 'Premium Granite', es: 'Granito Superior', it: 'Granito Superiore' })}</option>
+                  <option value="quartzite">{tr({ pt: 'Quartzito Exótico', en: 'Exotic Quartzite', es: 'Cuarcita Exótica', it: 'Quarzite Esotica', de: 'Exotischer Quarzit' })}</option>
+                  <option value="marble">{tr({ pt: 'Mármore Nobre', en: 'Noble Marble', es: 'Mármol Noble', it: 'Marmo Pregiato', de: 'Edelmarmor' })}</option>
+                  <option value="granite">{tr({ pt: 'Granito Superior', en: 'Premium Granite', es: 'Granito Superior', it: 'Granito Superiore', de: 'Premium-Granit' })}</option>
                 </select>
               </div>
             </div>
@@ -264,7 +269,7 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                   {totalBundles}
                 </div>
                 <div className="text-[10px] text-stone-500">
-                  ~{slabsPerBundle} {tr({ pt: 'ch/cavalete', en: 'slabs/bundle', es: 'pl/caballete', it: 'lastre/cavalletto' })}
+                  ~{slabsPerBundle} {tr({ pt: 'ch/cavalete', en: 'slabs/bundle', es: 'pl/caballete', it: 'lastre/cavalletto', de: 'Pl./Bock' })}
                 </div>
               </div>
 
@@ -277,7 +282,7 @@ export const B2BCalculator: React.FC<B2BCalculatorProps> = ({
                   {containersNeeded} <span className="text-xs text-stone-400">({containerUtilizationPercent}%)</span>
                 </div>
                 <div className="text-[10px] text-stone-500">
-                  {tr({ pt: 'Máx. 27t', en: 'Max 27t', es: 'Máx. 27t', it: 'Max 27t' })}
+                  {tr({ pt: 'Máx. 27t', en: 'Max 27t', es: 'Máx. 27t', it: 'Max 27t', de: 'Max. 27 t' })}
                 </div>
               </div>
             </div>
