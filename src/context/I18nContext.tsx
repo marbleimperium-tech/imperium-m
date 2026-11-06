@@ -3,7 +3,7 @@ import { Language, Translations, TRANSLATIONS } from '../i18n/translations';
 import { localizeStone } from '../i18n/stoneTranslations';
 import type { StoneItem } from '../types/stone';
 
-export type LocalizedText = Record<Language, string>;
+export type LocalizedText = Partial<Record<Language, string>> & { pt: string };
 
 interface I18nContextType {
   language: Language;
